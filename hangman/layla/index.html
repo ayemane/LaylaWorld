@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layla's Report Card - Hangman</title>
+  <style>
+    :root {
+      --color-primary: #8b5cf6;
+      --color-primary-light: #a78bfa;
+      --color-secondary: #f472b6;
+      --color-success: #34d399;
+      --color-warning: #fbbf24;
+      --color-bg: #fef3c7;
+      --color-text: #1e1b4b;
+      --font-main: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: linear-gradient(135deg, var(--color-bg) 0%, #fde68a 100%);
+      min-height: 100vh;
+      color: var(--color-text);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 5px;
+    }
+
+    .header .subtitle {
+      color: var(--color-secondary);
+      font-size: 1.2rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      color: var(--color-primary);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      border-bottom: 3px solid var(--color-bg);
+      padding-bottom: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: var(--color-bg);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .streak-display {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    .streak-item {
+      text-align: center;
+    }
+
+    .streak-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .streak-value.current {
+      color: var(--color-success);
+    }
+
+    .streak-value.best {
+      color: var(--color-warning);
+    }
+
+    .difficulty-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .difficulty-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .difficulty-label {
+      width: 80px;
+      font-weight: 600;
+    }
+
+    .difficulty-label.easy { color: #059669; }
+    .difficulty-label.medium { color: #d97706; }
+    .difficulty-label.hard { color: #dc2626; }
+
+    .progress-container {
+      flex: 1;
+      height: 24px;
+      background: #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 12px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-fill.easy { background: linear-gradient(90deg, #86efac, #34d399); }
+    .progress-fill.medium { background: linear-gradient(90deg, #fde047, #facc15); }
+    .progress-fill.hard { background: linear-gradient(90deg, #fca5a5, #f87171); }
+
+    .difficulty-count {
+      width: 60px;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    .achievement {
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      background: #f3f4f6;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .achievement.unlocked {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-color: var(--color-warning);
+    }
+
+    .achievement.locked {
+      opacity: 0.5;
+    }
+
+    .achievement-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .achievement-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .achievement-desc {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    .words-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .word-tag {
+      background: var(--color-primary);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .empty-message {
+      color: #999;
+      font-style: italic;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .print-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover {
+      background: #7c3aed;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .back-link, .print-btn {
+        display: none;
+      }
+
+      .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/hangman/" class="back-link">← Back to Game</a>
+
+    <div class="header">
+      <h1>Layla's Report Card</h1>
+      <p class="subtitle">Hangman Progress Tracker</p>
+    </div>
+
+    <div class="card">
+      <h2>Overall Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="total-games">0</div>
+          <div class="stat-label">Games Played</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="win-rate">0%</div>
+          <div class="stat-label">Win Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="total-wins">0</div>
+          <div class="stat-label">Wins</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="words-mastered">0</div>
+          <div class="stat-label">Words Learned</div>
+        </div>
+      </div>
+      <div class="streak-display">
+        <div class="streak-item">
+          <div class="streak-value current" id="current-streak">0</div>
+          <div class="stat-label">Current Streak</div>
+        </div>
+        <div class="streak-item">
+          <div class="streak-value best" id="best-streak">0</div>
+          <div class="stat-label">Best Streak</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Progress by Level</h2>
+      <div class="difficulty-stats">
+        <div class="difficulty-row">
+          <span class="difficulty-label easy">Easy</span>
+          <div class="progress-container">
+            <div class="progress-fill easy" id="easy-progress"></div>
+          </div>
+          <span class="difficulty-count" id="easy-count">0/0</span>
+        </div>
+        <div class="difficulty-row">
+          <span class="difficulty-label medium">Medium</span>
+          <div class="progress-container">
+            <div class="progress-fill medium" id="medium-progress"></div>
+          </div>
+          <span class="difficulty-count" id="medium-count">0/0</span>
+        </div>
+        <div class="difficulty-row">
+          <span class="difficulty-label hard">Hard</span>
+          <div class="progress-container">
+            <div class="progress-fill hard" id="hard-progress"></div>
+          </div>
+          <span class="difficulty-count" id="hard-count">0/0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Achievements</h2>
+      <div class="achievements-grid" id="achievements-grid">
+        <!-- Achievements will be populated by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Words Mastered</h2>
+      <div class="words-list" id="words-list">
+        <!-- Words will be populated by JS -->
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">
+      Print Report Card
+    </button>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'hangman-layla-stats';
+
+    const achievementIcons = {
+      'first-win': '🏆',
+      'streak-3': '🔥',
+      'streak-5': '⚡',
+      'streak-10': '👑',
+      'ten-games': '🎮',
+      'fifty-games': '🎯',
+      'master-easy': '🌟',
+      'master-medium': '⭐',
+      'master-hard': '💫',
+      'word-collector': '📚',
+      'vocabulary-king': '🎓',
+      'perfect-game': '💯'
+    };
+
+    function loadStats() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          return JSON.parse(stored);
+        }
+      } catch (e) {
+        console.error('Failed to load stats:', e);
+      }
+      return null;
+    }
+
+    function updateDisplay(stats) {
+      if (!stats) {
+        document.getElementById('total-games').textContent = '0';
+        document.getElementById('win-rate').textContent = '0%';
+        document.getElementById('total-wins').textContent = '0';
+        document.getElementById('words-mastered').textContent = '0';
+        document.getElementById('current-streak').textContent = '0';
+        document.getElementById('best-streak').textContent = '0';
+
+        document.getElementById('words-list').innerHTML =
+          '<p class="empty-message">No words mastered yet. Start playing to see your progress!</p>';
+
+        document.getElementById('achievements-grid').innerHTML =
+          '<p class="empty-message">Play games to unlock achievements!</p>';
+
+        return;
+      }
+
+      // Overall stats
+      document.getElementById('total-games').textContent = stats.totalGames;
+      const winRate = stats.totalGames > 0
+        ? Math.round((stats.wins / stats.totalGames) * 100)
+        : 0;
+      document.getElementById('win-rate').textContent = winRate + '%';
+      document.getElementById('total-wins').textContent = stats.wins;
+      document.getElementById('words-mastered').textContent = stats.wordsMastered.length;
+      document.getElementById('current-streak').textContent = stats.currentStreak;
+      document.getElementById('best-streak').textContent = stats.bestStreak;
+
+      // Difficulty progress
+      ['easy', 'medium', 'hard'].forEach(diff => {
+        const data = stats.gamesByDifficulty[diff];
+        const progress = data.played > 0 ? (data.won / data.played) * 100 : 0;
+        document.getElementById(`${diff}-progress`).style.width = `${progress}%`;
+        document.getElementById(`${diff}-count`).textContent = `${data.won}/${data.played}`;
+      });
+
+      // Achievements
+      const achievementsGrid = document.getElementById('achievements-grid');
+      achievementsGrid.innerHTML = '';
+
+      stats.achievements.forEach(ach => {
+        const div = document.createElement('div');
+        div.className = `achievement ${ach.unlockedAt ? 'unlocked' : 'locked'}`;
+        div.innerHTML = `
+          <div class="achievement-icon">${achievementIcons[ach.id] || '🏅'}</div>
+          <div class="achievement-name">${ach.name}</div>
+          <div class="achievement-desc">${ach.description}</div>
+        `;
+        achievementsGrid.appendChild(div);
+      });
+
+      // Words mastered
+      const wordsList = document.getElementById('words-list');
+      if (stats.wordsMastered.length === 0) {
+        wordsList.innerHTML =
+          '<p class="empty-message">No words mastered yet. Start playing to see your progress!</p>';
+      } else {
+        wordsList.innerHTML = stats.wordsMastered
+          .sort()
+          .map(word => `<span class="word-tag">${word}</span>`)
+          .join('');
+      }
+    }
+
+    // Load and display stats on page load
+    const stats = loadStats();
+    updateDisplay(stats);
+  </script>
+</body>
+</html>

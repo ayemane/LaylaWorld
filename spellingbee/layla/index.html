@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spelling Report - Spelling Bee</title>
+  <style>
+    :root {
+      --color-primary: #f59e0b;
+      --color-primary-light: #fbbf24;
+      --color-primary-dark: #d97706;
+      --color-success: #34d399;
+      --color-bg: #fffbeb;
+      --color-bg-dark: #fef3c7;
+      --color-text: #78350f;
+      --color-text-light: #92400e;
+      --font-main: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-main);
+      background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-dark) 100%);
+      min-height: 100vh;
+      color: var(--color-text);
+      padding: 20px;
+    }
+
+    .container { max-width: 600px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 5px;
+    }
+
+    .header .bee { font-size: 3rem; }
+
+    .header .subtitle {
+      color: var(--color-text-light);
+      font-size: 1.2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      color: var(--color-primary-dark);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      border-bottom: 3px solid var(--color-bg-dark);
+      padding-bottom: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: var(--color-bg);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      margin-top: 5px;
+    }
+
+    .accuracy-bar {
+      height: 30px;
+      background: var(--color-bg-dark);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .accuracy-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      transition: width 0.5s ease;
+    }
+
+    .words-mastered {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .word-tag {
+      background: var(--color-primary);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .achievement {
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      background: var(--color-bg);
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .achievement.unlocked {
+      border-color: var(--color-primary);
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .achievement.locked { opacity: 0.4; }
+    .achievement-icon { font-size: 2rem; margin-bottom: 8px; }
+    .achievement-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+    .achievement-desc { font-size: 0.7rem; color: var(--color-text-light); }
+
+    .empty-message {
+      color: var(--color-text-light);
+      text-align: center;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    .print-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .print-btn:hover { background: var(--color-primary-dark); }
+
+    @media print {
+      body { background: white; }
+      .back-link, .print-btn { display: none; }
+      .card { box-shadow: none; border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/spellingbee/" class="back-link">← Back to Spelling Bee</a>
+
+    <div class="header">
+      <span class="bee">🐝</span>
+      <h1>Spelling Report</h1>
+      <p class="subtitle">Your spelling progress</p>
+    </div>
+
+    <div class="card">
+      <h2>Overall Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="total-games">0</div>
+          <div class="stat-label">Rounds Played</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="high-score">0</div>
+          <div class="stat-label">High Score</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="words-mastered">0</div>
+          <div class="stat-label">Words Mastered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="best-streak">0</div>
+          <div class="stat-label">Best Streak</div>
+        </div>
+      </div>
+      <div class="accuracy-bar">
+        <div class="accuracy-fill" id="accuracy-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Words I Can Spell</h2>
+      <div class="words-mastered" id="words-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Achievements</h2>
+      <div class="achievements-grid" id="achievements-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Print Spelling Report</button>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'spellingbee-layla-stats';
+
+    const achievementIcons = {
+      'first-win': '🐝',
+      'streak-5': '🔥',
+      'streak-10': '⚡',
+      'perfect-easy': '🌸',
+      'perfect-medium': '🍯',
+      'perfect-hard': '👑',
+      'words-25': '📚',
+      'words-50': '🎓',
+      'games-10': '🎮',
+      'games-50': '🏆',
+      'score-500': '⭐',
+      'score-1000': '🌟'
+    };
+
+    function loadStats() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function updateDisplay(stats) {
+      if (!stats) {
+        document.getElementById('total-games').textContent = '0';
+        document.getElementById('high-score').textContent = '0';
+        document.getElementById('words-mastered').textContent = '0';
+        document.getElementById('best-streak').textContent = '0';
+        document.getElementById('accuracy-fill').style.width = '0%';
+        document.getElementById('accuracy-fill').textContent = '0%';
+
+        document.getElementById('words-list').innerHTML =
+          '<p class="empty-message">Start spelling to see your words here!</p>';
+        document.getElementById('achievements-grid').innerHTML =
+          '<p class="empty-message">Play rounds to unlock achievements!</p>';
+        return;
+      }
+
+      document.getElementById('total-games').textContent = stats.totalGames;
+      document.getElementById('high-score').textContent = stats.highScore;
+      document.getElementById('words-mastered').textContent = stats.wordsMastered.length;
+      document.getElementById('best-streak').textContent = stats.bestStreak;
+
+      const accuracy = stats.totalWords > 0
+        ? Math.round((stats.correctWords / stats.totalWords) * 100)
+        : 0;
+      document.getElementById('accuracy-fill').style.width = accuracy + '%';
+      document.getElementById('accuracy-fill').textContent = accuracy + '%';
+
+      // Words mastered
+      const wordsList = document.getElementById('words-list');
+      if (stats.wordsMastered.length === 0) {
+        wordsList.innerHTML = '<p class="empty-message">Start spelling to see your words here!</p>';
+      } else {
+        wordsList.innerHTML = stats.wordsMastered
+          .sort()
+          .map(word => `<span class="word-tag">${word}</span>`)
+          .join('');
+      }
+
+      // Achievements
+      const achGrid = document.getElementById('achievements-grid');
+      achGrid.innerHTML = '';
+      stats.achievements.forEach(ach => {
+        const div = document.createElement('div');
+        div.className = `achievement ${ach.unlockedAt ? 'unlocked' : 'locked'}`;
+        div.innerHTML = `
+          <div class="achievement-icon">${achievementIcons[ach.id] || '🏅'}</div>
+          <div class="achievement-name">${ach.name}</div>
+          <div class="achievement-desc">${ach.description}</div>
+        `;
+        achGrid.appendChild(div);
+      });
+    }
+
+    const stats = loadStats();
+    updateDisplay(stats);
+  </script>
+</body>
+</html>

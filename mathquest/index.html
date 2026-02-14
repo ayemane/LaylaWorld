@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#3b82f6">
+  <title>Math Quest - Layla's World</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <a href="/" class="home-link">← Layla's World</a>
+      <h1 class="game-title">Math Quest</h1>
+      <p class="subtitle">Launch your rocket to space!</p>
+
+      <div class="difficulty-select">
+        <h2>Choose your mission:</h2>
+        <button class="difficulty-btn easy" data-difficulty="easy">
+          <span class="emoji">🚀</span>
+          <div>
+            <span class="label">Cadet</span>
+            <span class="desc">+ and − up to 20</span>
+          </div>
+        </button>
+        <button class="difficulty-btn medium" data-difficulty="medium">
+          <span class="emoji">🛸</span>
+          <div>
+            <span class="label">Pilot</span>
+            <span class="desc">Bigger numbers + ×</span>
+          </div>
+        </button>
+        <button class="difficulty-btn hard" data-difficulty="hard">
+          <span class="emoji">🌟</span>
+          <div>
+            <span class="label">Commander</span>
+            <span class="desc">All operations!</span>
+          </div>
+        </button>
+      </div>
+
+      <a href="/mathquest/layla/" class="stats-link">📊 Mission Log</a>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div id="score-display">Score: 0</div>
+        <div id="streak-display">0</div>
+        <div id="timer-display">⏱️ 30s</div>
+      </div>
+
+      <div id="lives-display">❤️❤️❤️❤️❤️</div>
+
+      <div class="rocket-container">
+        <div id="rocket-progress"></div>
+        <div id="rocket">🛸</div>
+        <div id="progress-text">0/10</div>
+      </div>
+
+      <div class="problem-container">
+        <div id="problem-display">3 + 5</div>
+      </div>
+
+      <div id="message-display"></div>
+
+      <div class="answer-container">
+        <input type="number" id="answer-input" placeholder="?" autocomplete="off" inputmode="numeric">
+        <button id="submit-btn">GO!</button>
+      </div>
+
+      <div class="number-pad">
+        <button class="num-btn" data-value="1">1</button>
+        <button class="num-btn" data-value="2">2</button>
+        <button class="num-btn" data-value="3">3</button>
+        <button class="num-btn" data-value="4">4</button>
+        <button class="num-btn" data-value="5">5</button>
+        <button class="num-btn" data-value="6">6</button>
+        <button class="num-btn" data-value="7">7</button>
+        <button class="num-btn" data-value="8">8</button>
+        <button class="num-btn" data-value="9">9</button>
+        <button class="num-btn action" data-value="clear">C</button>
+        <button class="num-btn" data-value="0">0</button>
+        <button class="num-btn action" data-value="backspace">←</button>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <div id="confetti-container"></div>
+      <div class="result-content">
+        <h1 id="result-title">Mission Complete!</h1>
+        <p id="result-message">The rocket made it to space!</p>
+        <div id="final-score">Final Score: 0</div>
+        <div id="result-stats"></div>
+        <div class="result-buttons">
+          <button id="play-again-btn" class="primary-btn">Play Again</button>
+          <button id="change-level-btn" class="secondary-btn">Change Mission</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/mathquest/main.ts"></script>
+</body>
+</html>

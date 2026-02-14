@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8b5cf6">
+  <title>Hangman - Layla's World</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <a href="/" class="home-link">← Layla's World</a>
+      <h1 class="game-title">Hangman</h1>
+      <p class="subtitle">Let's play a word game!</p>
+
+      <div class="difficulty-select">
+        <h2>Pick your level:</h2>
+        <button class="difficulty-btn easy" data-difficulty="easy">
+          <span class="emoji">🌟</span>
+          <span class="label">Easy</span>
+          <span class="desc">Short words, more chances</span>
+        </button>
+        <button class="difficulty-btn medium" data-difficulty="medium">
+          <span class="emoji">⭐</span>
+          <span class="label">Medium</span>
+          <span class="desc">Longer words</span>
+        </button>
+        <button class="difficulty-btn hard" data-difficulty="hard">
+          <span class="emoji">🌙</span>
+          <span class="label">Hard</span>
+          <span class="desc">Challenge mode!</span>
+        </button>
+      </div>
+
+      <a href="/hangman/layla/" class="stats-link">📊 Layla's Report Card</a>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <button id="back-btn" class="icon-btn">← Back</button>
+        <div class="category-badge" id="category-badge"></div>
+        <div class="guess-counter" id="guess-counter"></div>
+      </div>
+
+      <div class="hangman-container">
+        <svg id="hangman-svg" viewBox="0 0 200 250" class="hangman-drawing">
+          <!-- Gallows -->
+          <line x1="20" y1="230" x2="100" y2="230" class="gallows" />
+          <line x1="60" y1="230" x2="60" y2="20" class="gallows" />
+          <line x1="60" y1="20" x2="140" y2="20" class="gallows" />
+          <line x1="140" y1="20" x2="140" y2="50" class="gallows" />
+
+          <!-- Character parts (hidden initially) -->
+          <circle cx="140" cy="70" r="20" class="body-part head" />
+          <line x1="140" y1="90" x2="140" y2="150" class="body-part body" />
+          <line x1="140" y1="110" x2="110" y2="140" class="body-part left-arm" />
+          <line x1="140" y1="110" x2="170" y2="140" class="body-part right-arm" />
+          <line x1="140" y1="150" x2="110" y2="190" class="body-part left-leg" />
+          <line x1="140" y1="150" x2="170" y2="190" class="body-part right-leg" />
+
+          <!-- Face (for lose state) -->
+          <circle cx="132" cy="65" r="3" class="face-part eye-left" />
+          <circle cx="148" cy="65" r="3" class="face-part eye-right" />
+          <path d="M 130 80 Q 140 75 150 80" class="face-part mouth-sad" />
+
+          <!-- Face (for win state - hidden) -->
+          <circle cx="132" cy="65" r="3" class="face-part-win eye-left-win" />
+          <circle cx="148" cy="65" r="3" class="face-part-win eye-right-win" />
+          <path d="M 130 78 Q 140 88 150 78" class="face-part-win mouth-happy" />
+        </svg>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+
+      <div class="message-display" id="message-display"></div>
+
+      <div class="word-display" id="word-display"></div>
+
+      <div class="keyboard" id="keyboard"></div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <div id="confetti-container"></div>
+      <div class="result-content">
+        <h1 id="result-title"></h1>
+        <p id="result-message"></p>
+        <div id="result-word" class="result-word"></div>
+        <div class="result-buttons">
+          <button id="play-again-btn" class="primary-btn">Play Again</button>
+          <button id="change-level-btn" class="secondary-btn">Change Level</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

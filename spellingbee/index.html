@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#f59e0b">
+  <title>Spelling Bee - Layla's World</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <a href="/" class="home-link">← Layla's World</a>
+      <h1 class="game-title">Spelling Bee</h1>
+      <span class="bee-icon">🐝</span>
+      <p class="subtitle">Listen and spell the word!</p>
+
+      <div class="difficulty-select">
+        <h2>Pick your hive:</h2>
+        <button class="difficulty-btn easy" data-difficulty="easy">
+          <span class="emoji">🌸</span>
+          <div>
+            <span class="label">Honeybee</span>
+            <span class="desc">Short, simple words</span>
+          </div>
+        </button>
+        <button class="difficulty-btn medium" data-difficulty="medium">
+          <span class="emoji">🍯</span>
+          <div>
+            <span class="label">Worker Bee</span>
+            <span class="desc">Longer words</span>
+          </div>
+        </button>
+        <button class="difficulty-btn hard" data-difficulty="hard">
+          <span class="emoji">👑</span>
+          <div>
+            <span class="label">Queen Bee</span>
+            <span class="desc">Tricky spelling!</span>
+          </div>
+        </button>
+      </div>
+
+      <a href="/spellingbee/layla/" class="stats-link">📊 Spelling Report</a>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div id="score-display">Score: 0</div>
+        <div id="streak-display">0</div>
+        <div id="lives-display">🐝🐝🐝🐝</div>
+      </div>
+
+      <div class="progress-container">
+        <div id="progress-fill" style="width: 0%"></div>
+      </div>
+      <div id="progress-text">Word 1 of 8</div>
+
+      <div class="word-display">
+        <div id="word-number">#1</div>
+        <div id="hint-indicator" style="display: none;"></div>
+      </div>
+
+      <div class="speak-buttons">
+        <button class="speak-btn primary" id="speak-word-btn">
+          <span class="icon">🔊</span> Hear Word
+        </button>
+        <button class="speak-btn" id="speak-sentence-btn">
+          <span class="icon">📝</span> Sentence
+        </button>
+        <button class="speak-btn" id="speak-definition-btn">
+          <span class="icon">📖</span> Meaning
+        </button>
+      </div>
+
+      <div id="message-display"></div>
+
+      <div class="input-container">
+        <input
+          type="text"
+          id="spelling-input"
+          placeholder="Type the spelling..."
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+        >
+        <div class="button-row">
+          <button id="submit-btn">Check Spelling</button>
+          <button id="skip-btn">Skip</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <div id="confetti-container"></div>
+      <div class="result-content">
+        <h1 id="result-title">Spelling Champion!</h1>
+        <p id="result-message">You spelled all the words!</p>
+        <div id="final-score">Final Score: 0</div>
+        <div id="result-stats"></div>
+        <div class="result-buttons">
+          <button id="play-again-btn" class="primary-btn">Play Again</button>
+          <button id="change-level-btn" class="secondary-btn">Change Level</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/spellingbee/main.ts"></script>
+</body>
+</html>
