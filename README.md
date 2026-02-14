@@ -1,54 +1,47 @@
-# Hangman for Layla
+# Layla's World
 
-A colorful, playful Hangman game designed for a 2nd grader with difficulty levels, fun sounds, progress tracking, and achievements.
+A collection of colorful, kid-friendly educational web games built for a 2nd grader. Touch-friendly, sound-enabled, and progress-tracked.
+
+## Games
+
+### Hangman
+Guess the word letter by letter with three difficulty levels.
+- **Easy**: Short words, category hints, 8 attempts
+- **Medium**: Medium words, first letter revealed, 6 attempts
+- **Hard**: Long words, no hints, 6 attempts
+- Word categories: Animals, Food, School, Nature
+- Animated hangman character, confetti on wins
+
+### Math Quest
+Blast off with math! Solve problems to launch your rocket.
+- Addition, subtraction, multiplication practice
+- Adaptive difficulty
+- Rocket launch animation on streaks
+
+### Spelling Bee
+Listen to a word and spell it out.
+- Text-to-speech pronunciation
+- Grade-appropriate word lists
+- Streak tracking and encouragement
 
 ## Features
 
-- **Three Difficulty Levels**
-  - **Easy**: Short words (2-5 letters), category hints, 8 attempts
-  - **Medium**: Medium words (6-7 letters), first letter revealed, 6 attempts
-  - **Hard**: Long words (8+ letters), no hints, 6 attempts
-
-- **Word Categories**: Animals, Food, School, Nature
-
-- **Fun Interactions**
-  - Colorful animated hangman character
-  - Touch-friendly on-screen keyboard
-  - Letter tiles with flip animations
-  - Confetti celebration on wins
-  - Encouraging messages
-
-- **Sound Effects** (Web Audio API)
-  - Key press clicks
-  - Correct/wrong letter sounds
-  - Win/lose sounds
-
-- **Progress Tracking**
-  - Games played and win rate
-  - Current and best streak
-  - Words mastered list
-  - Achievements system
-  - Print-friendly report card
+- Sound effects via Web Audio API
+- Progress tracking and stats via LocalStorage
+- Achievements and streak tracking
+- Printable report cards at each game's `/layla/` page
+- Mobile-friendly with on-screen keyboards
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+ installed
-
-### Installation
-
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-The game will be available at http://localhost:3001
+Opens at http://localhost:3001
 
-### Building for Production
+## Build
 
 ```bash
 npm run build
@@ -58,41 +51,30 @@ npm run preview
 ## Project Structure
 
 ```
-Hangman/
-├── index.html              # Main game page
+LaylaWorld/
+├── index.html                # Hub — game launcher
+├── hangman/
+│   ├── index.html            # Hangman game
+│   └── layla/index.html      # Hangman report card
+├── mathquest/
+│   ├── index.html            # Math Quest game
+│   └── layla/index.html      # Math Quest report card
+├── spellingbee/
+│   ├── index.html            # Spelling Bee game
+│   └── layla/index.html      # Spelling Bee report card
 ├── src/
-│   ├── main.ts             # App entry point
-│   ├── styles/main.css     # All styles
-│   ├── game/
-│   │   ├── hangman.ts      # Core game logic
-│   │   ├── words.ts        # Word lists
-│   │   └── sounds.ts       # Sound manager
-│   ├── ui/
-│   │   ├── keyboard.ts     # On-screen keyboard
-│   │   ├── display.ts      # Word & hangman display
-│   │   └── screens.ts      # Screen management
-│   └── stats/
-│       └── tracker.ts      # Progress tracking
-├── layla/
-│   └── index.html          # Report card page
-└── public/
-    └── manifest.json       # PWA manifest
+│   ├── main.ts               # Hangman entry point
+│   ├── game/                  # Hangman game logic
+│   ├── mathquest/             # Math Quest game logic
+│   ├── spellingbee/           # Spelling Bee game logic
+│   ├── ui/                    # Shared UI (keyboard, display, screens)
+│   ├── stats/                 # Progress tracker
+│   └── styles/                # CSS per game
+├── public/manifest.json       # PWA manifest
+├── vite.config.ts
+└── tsconfig.json
 ```
 
-## Layla's Report Card
+## Tech
 
-Visit `/layla/` to see:
-- Total games played
-- Win/loss record
-- Current and best streak
-- Words mastered
-- Achievement badges
-- Printable report card
-
-## Future Enhancements
-
-- More word categories
-- Multiplayer mode
-- Custom word input for parents
-- Additional educational games
-- Full PWA with offline support
+TypeScript, Vite, Web Audio API, LocalStorage
