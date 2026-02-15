@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#10b981">
+  <title>Map Explorer - Layla's World</title>
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <a href="/" class="home-link">&larr; Layla's World</a>
+      <h1 class="game-title">Map Explorer</h1>
+      <p class="subtitle">Discover the world!</p>
+
+      <div class="difficulty-select">
+        <h2>Choose your adventure:</h2>
+        <button class="difficulty-btn easy" data-difficulty="easy">
+          <span class="emoji">🗺️</span>
+          <div>
+            <span class="label">Scout</span>
+            <span class="desc">15 big US states</span>
+          </div>
+        </button>
+        <button class="difficulty-btn medium" data-difficulty="medium">
+          <span class="emoji">🧭</span>
+          <div>
+            <span class="label">Ranger</span>
+            <span class="desc">All 50 US states</span>
+          </div>
+        </button>
+        <button class="difficulty-btn hard" data-difficulty="hard">
+          <span class="emoji">🌍</span>
+          <div>
+            <span class="label">Explorer</span>
+            <span class="desc">World map!</span>
+          </div>
+        </button>
+      </div>
+
+      <a href="/mapexplorer/layla/" class="stats-link">📊 Explorer Log</a>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div id="score-display">Score: 0</div>
+        <div id="streak-display">0</div>
+        <div id="timer-display">⏱️ 30s</div>
+      </div>
+
+      <div id="lives-display">❤️❤️❤️❤️❤️</div>
+
+      <div class="prompt-container">
+        <div id="prompt-display">Find California!</div>
+        <div id="progress-display">1 of 8</div>
+      </div>
+
+      <div class="game-controls">
+        <button id="hint-btn">💡 Hint (2)</button>
+      </div>
+
+      <div class="map-container">
+        <svg id="map-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+
+      <div id="message-display"></div>
+      <div id="funfact-display"></div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <div id="confetti-container"></div>
+      <div class="result-content">
+        <h1 id="result-title">Great Exploring!</h1>
+        <p id="result-message">You discovered so many places!</p>
+        <div id="final-score">Final Score: 0</div>
+        <div id="result-stats"></div>
+        <div class="result-buttons">
+          <button id="play-again-btn" class="primary-btn">Explore Again</button>
+          <button id="change-level-btn" class="secondary-btn">Change Level</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/mapexplorer/main.ts"></script>
+</body>
+</html>

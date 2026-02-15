@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer Log - Map Explorer</title>
+  <style>
+    :root {
+      --color-primary: #10b981;
+      --color-primary-light: #34d399;
+      --color-secondary: #f472b6;
+      --color-success: #34d399;
+      --color-warning: #fbbf24;
+      --color-bg: #0f172a;
+      --color-bg-light: #1e293b;
+      --color-text: #f1f5f9;
+      --color-text-dim: #94a3b8;
+      --font-main: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-main);
+      background: linear-gradient(135deg, var(--color-bg) 0%, #1a1a2e 100%);
+      min-height: 100vh;
+      color: var(--color-text);
+      padding: 20px;
+    }
+
+    .container { max-width: 600px; margin: 0 auto; }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--color-primary-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover { text-decoration: underline; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--color-primary-light), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+    }
+
+    .header .subtitle {
+      color: var(--color-text-dim);
+      font-size: 1.2rem;
+    }
+
+    .card {
+      background: var(--color-bg-light);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      color: var(--color-primary-light);
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--color-bg);
+      padding-bottom: 10px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background: var(--color-bg);
+      border-radius: 12px;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-warning);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--color-text-dim);
+      margin-top: 5px;
+    }
+
+    .accuracy-bar {
+      height: 30px;
+      background: var(--color-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .accuracy-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: width 0.5s ease;
+    }
+
+    .difficulty-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .difficulty-item {
+      padding: 15px;
+      background: var(--color-bg);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .difficulty-icon { font-size: 1.5rem; margin-bottom: 5px; }
+    .difficulty-wins { font-size: 1.3rem; font-weight: 700; color: var(--color-success); }
+    .difficulty-label { font-size: 0.8rem; color: var(--color-text-dim); }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .achievement {
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      background: var(--color-bg);
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .achievement.unlocked {
+      border-color: var(--color-warning);
+      background: rgba(251, 191, 36, 0.1);
+    }
+
+    .achievement.locked { opacity: 0.4; }
+    .achievement-icon { font-size: 2rem; margin-bottom: 8px; }
+    .achievement-name { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+    .achievement-desc { font-size: 0.7rem; color: var(--color-text-dim); }
+
+    .print-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .print-btn:hover { background: var(--color-primary-light); }
+
+    @media print {
+      body { background: white; color: black; }
+      .back-link, .print-btn { display: none; }
+      .card { box-shadow: none; border: 1px solid #ddd; background: #f9f9f9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/mapexplorer/" class="back-link">&larr; Back to Map Explorer</a>
+
+    <div class="header">
+      <h1>Explorer Log</h1>
+      <p class="subtitle">Map Explorer Progress</p>
+    </div>
+
+    <div class="card">
+      <h2>Explorer Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="total-games">0</div>
+          <div class="stat-label">Expeditions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="high-score">0</div>
+          <div class="stat-label">High Score</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="states-found">0</div>
+          <div class="stat-label">States Found</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="best-streak">0</div>
+          <div class="stat-label">Best Streak</div>
+        </div>
+      </div>
+      <div class="accuracy-bar">
+        <div class="accuracy-fill" id="accuracy-fill" style="width: 0%">0%</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Difficulty Progress</h2>
+      <div class="difficulty-grid" id="difficulty-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Achievements</h2>
+      <div class="achievements-grid" id="achievements-grid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Print Explorer Log</button>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'mapexplorer-layla-stats';
+
+    const achievementIcons = {
+      'first-expedition': '🗺️',
+      'streak-5': '🔥',
+      'streak-10': '⚡',
+      'perfect-easy': '🌟',
+      'perfect-medium': '💫',
+      'perfect-hard': '👑',
+      'score-500': '🏅',
+      'score-1000': '🏆',
+      'games-10': '🎮',
+      'games-50': '🎯',
+      'states-25': '🧭',
+      'states-50': '🌎'
+    };
+
+    const difficultyInfo = {
+      easy: { icon: '🗺️', name: 'Scout' },
+      medium: { icon: '🧭', name: 'Ranger' },
+      hard: { icon: '🌍', name: 'Explorer' }
+    };
+
+    function loadStats() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function updateDisplay(stats) {
+      if (!stats) {
+        document.getElementById('total-games').textContent = '0';
+        document.getElementById('high-score').textContent = '0';
+        document.getElementById('states-found').textContent = '0';
+        document.getElementById('best-streak').textContent = '0';
+        document.getElementById('accuracy-fill').style.width = '0%';
+        document.getElementById('accuracy-fill').textContent = '0%';
+
+        document.getElementById('difficulty-grid').innerHTML =
+          '<p style="color: var(--color-text-dim); text-align: center; grid-column: span 3;">Play some games to see your stats!</p>';
+        document.getElementById('achievements-grid').innerHTML =
+          '<p style="color: var(--color-text-dim); text-align: center; grid-column: span 2;">Complete expeditions to unlock achievements!</p>';
+        return;
+      }
+
+      document.getElementById('total-games').textContent = stats.totalGames;
+      document.getElementById('high-score').textContent = stats.highScore;
+      document.getElementById('states-found').textContent = (stats.statesFound || []).length;
+      document.getElementById('best-streak').textContent = stats.bestStreak;
+
+      const accuracy = stats.totalQuestions > 0
+        ? Math.round((stats.correctAnswers / stats.totalQuestions) * 100)
+        : 0;
+      document.getElementById('accuracy-fill').style.width = accuracy + '%';
+      document.getElementById('accuracy-fill').textContent = accuracy + '%';
+
+      // Difficulty breakdown
+      const diffGrid = document.getElementById('difficulty-grid');
+      diffGrid.innerHTML = '';
+      for (const [diff, data] of Object.entries(stats.gamesByDifficulty)) {
+        const div = document.createElement('div');
+        div.className = 'difficulty-item';
+        div.innerHTML = `
+          <div class="difficulty-icon">${difficultyInfo[diff].icon}</div>
+          <div class="difficulty-wins">${data.won}/${data.played}</div>
+          <div class="difficulty-label">${difficultyInfo[diff].name}</div>
+        `;
+        diffGrid.appendChild(div);
+      }
+
+      // Achievements
+      const achGrid = document.getElementById('achievements-grid');
+      achGrid.innerHTML = '';
+      stats.achievements.forEach(ach => {
+        const div = document.createElement('div');
+        div.className = `achievement ${ach.unlockedAt ? 'unlocked' : 'locked'}`;
+        div.innerHTML = `
+          <div class="achievement-icon">${achievementIcons[ach.id] || '🏅'}</div>
+          <div class="achievement-name">${ach.name}</div>
+          <div class="achievement-desc">${ach.description}</div>
+        `;
+        achGrid.appendChild(div);
+      });
+    }
+
+    const stats = loadStats();
+    updateDisplay(stats);
+  </script>
+</body>
+</html>
