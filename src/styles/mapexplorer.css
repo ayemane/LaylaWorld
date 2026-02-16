@@ -276,6 +276,14 @@ body {
 }
 
 /* SVG Region Styles */
+/* World map land background */
+.map-land-bg {
+  fill: #283548;
+  stroke: #374357;
+  stroke-width: 0.5;
+  pointer-events: none;
+}
+
 .map-region {
   fill: #3b4a5e;
   fill-rule: evenodd;
