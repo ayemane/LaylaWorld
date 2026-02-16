@@ -10,7 +10,7 @@ import type { Difficulty, MapData } from './maps/types';
 import { mapStatsTracker } from './stats';
 import { soundManager } from '../game/sounds';
 import { US_STATES_MAP } from './maps/us-states';
-import { WORLD_MAP, WORLD_BG_PATHS } from './maps/world';
+import { WORLD_MAP } from './maps/world';
 
 class MapExplorerApp {
   private game: GameData | null = null;
@@ -83,16 +83,6 @@ class MapExplorerApp {
   private renderMap(mapData: MapData): void {
     this.mapSvg.setAttribute('viewBox', mapData.viewBox);
     this.mapSvg.innerHTML = '';
-
-    // Render background countries for world map (with borders, not clickable)
-    if (mapData.id === 'world') {
-      for (const bgPath of WORLD_BG_PATHS) {
-        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        bg.setAttribute('d', bgPath);
-        bg.classList.add('map-land-bg');
-        this.mapSvg.appendChild(bg);
-      }
-    }
 
     // Render regions
     mapData.regions.forEach(region => {
