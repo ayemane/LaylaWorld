@@ -277,17 +277,18 @@ body {
 
 /* SVG Region Styles */
 .map-region {
-  fill: #334155;
-  stroke: #475569;
-  stroke-width: 1;
+  fill: #3b4a5e;
+  fill-rule: evenodd;
+  stroke: #64748b;
+  stroke-width: 0.8;
   cursor: pointer;
   transition: fill 0.2s ease, opacity 0.2s ease;
 }
 
 .map-region:hover {
-  fill: #475569;
+  fill: #4b5e76;
   stroke: var(--color-primary-light);
-  stroke-width: 2;
+  stroke-width: 1.5;
 }
 
 .map-region.found {
