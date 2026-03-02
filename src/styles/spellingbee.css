@@ -15,6 +15,14 @@
   --shadow-honey: 0 4px 20px rgba(245, 158, 11, 0.3);
 }
 
+[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-bg-dark: #1a1a2e;
+  --color-text: #fef3c7;
+  --color-text-light: #d97706;
+  --shadow-honey: 0 4px 20px rgba(245, 158, 11, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,6 +35,11 @@ body {
   min-height: 100vh;
   color: var(--color-text);
   overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body::before {
+  opacity: 0.3;
 }
 
 /* Honeycomb pattern */
@@ -138,6 +151,11 @@ body::before {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+[data-theme="dark"] .difficulty-btn {
+  background: #1e293b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
 .difficulty-btn:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-honey);
@@ -195,6 +213,10 @@ body::before {
   transition: all 0.3s;
 }
 
+[data-theme="dark"] #streak-display:not(.active) {
+  background: #1e293b;
+}
+
 #streak-display.active {
   background: linear-gradient(135deg, #f97316, #ef4444);
   color: white;
@@ -221,6 +243,10 @@ body::before {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+[data-theme="dark"] .progress-container {
+  background: #334155;
+}
+
 #progress-fill {
   height: 20px;
   background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary));
@@ -243,6 +269,10 @@ body::before {
   box-shadow: var(--shadow-honey);
   text-align: center;
   margin: 10px 0;
+}
+
+[data-theme="dark"] .word-display {
+  background: #1e293b;
 }
 
 #word-number {
@@ -305,6 +335,11 @@ body::before {
   max-width: 400px;
 }
 
+[data-theme="dark"] #spelling-input {
+  background: #1e293b;
+  color: #fef3c7;
+}
+
 #spelling-input {
   width: 100%;
   padding: 18px;
@@ -349,6 +384,12 @@ body::before {
 #submit-btn:hover {
   transform: scale(1.02);
   box-shadow: var(--shadow-honey);
+}
+
+[data-theme="dark"] #skip-btn {
+  background: #1e293b;
+  border-color: #475569;
+  color: #94a3b8;
 }
 
 #skip-btn {
@@ -398,6 +439,15 @@ body::before {
   padding: 40px;
   border-radius: 24px;
   box-shadow: var(--shadow-honey);
+}
+
+[data-theme="dark"] .result-content {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .secondary-btn {
+  background: #0f172a;
+  color: var(--color-primary-light);
 }
 
 #result-title {

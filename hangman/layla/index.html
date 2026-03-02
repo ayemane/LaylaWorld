@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Layla's Report Card - Hangman</title>
+  <script>
+    (function(){var t=localStorage.getItem('layla-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')})();
+  </script>
   <style>
     :root {
       --color-primary: #8b5cf6;
@@ -22,12 +25,22 @@
       box-sizing: border-box;
     }
 
+    [data-theme="dark"] {
+      --color-bg: #0f172a;
+      --color-text: #f1f5f9;
+    }
+
     body {
       font-family: var(--font-main);
       background: linear-gradient(135deg, var(--color-bg) 0%, #fde68a 100%);
       min-height: 100vh;
       color: var(--color-text);
       padding: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    [data-theme="dark"] body {
+      background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
     }
 
     .container {
@@ -71,6 +84,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    [data-theme="dark"] .card {
+      background: #1e293b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     .card h2 {
       color: var(--color-primary);
       margin-bottom: 20px;
@@ -102,6 +120,29 @@
       font-size: 0.9rem;
       color: #666;
       margin-top: 5px;
+    }
+
+    [data-theme="dark"] .stat-label,
+    [data-theme="dark"] .difficulty-count,
+    [data-theme="dark"] .achievement-desc,
+    [data-theme="dark"] .empty-message {
+      color: #94a3b8;
+    }
+
+    [data-theme="dark"] .stat-item {
+      background: #0f172a;
+    }
+
+    [data-theme="dark"] .progress-container {
+      background: #334155;
+    }
+
+    [data-theme="dark"] .achievement {
+      background: #0f172a;
+    }
+
+    [data-theme="dark"] .achievement.unlocked {
+      background: rgba(251, 191, 36, 0.15);
     }
 
     .streak-display {
