@@ -11,31 +11,102 @@ import { mapStatsTracker } from './stats';
 import { soundManager } from '../game/sounds';
 import { US_STATES_MAP } from './maps/us-states';
 import { WORLD_MAP } from './maps/world';
+import {
+  isChallengeUnlocked, getXPData, getXPForNextLevel, awardXP, XP_AWARDS,
+} from './store';
+import { getTotalRegions } from './learn';
+import { LearnUI } from './learn-ui';
+import { TwoPlayerUI } from './twoplayer-ui';
+
+const DIFFICULTY_LABELS: Record<Difficulty, string> = {
+  easy: 'Scout',
+  medium: 'Ranger',
+  hard: 'Explorer',
+};
 
 class MapExplorerApp {
   private game: GameData | null = null;
   private currentDifficulty: Difficulty = 'easy';
   private timerInterval: number | null = null;
   private hintTimeout: number | null = null;
+  private learnUI: LearnUI;
+  private twoPlayerUI: TwoPlayerUI;
 
   // DOM elements
   private startScreen = document.getElementById('start-screen')!;
+  private modePickerScreen = document.getElementById('mode-picker-screen')!;
+  private learnCardScreen = document.getElementById('learn-card-screen')!;
+  private learnQuizScreen = document.getElementById('learn-quiz-screen')!;
+  private learnCompleteScreen = document.getElementById('learn-complete-screen')!;
   private gameScreen = document.getElementById('game-screen')!;
+  private switchScreen = document.getElementById('switch-screen')!;
   private resultScreen = document.getElementById('result-screen')!;
+  private twoplayerResultScreen = document.getElementById('twoplayer-result-screen')!;
   private mapSvg = document.getElementById('map-svg') as unknown as SVGSVGElement;
+  private learnMapSvg = document.getElementById('learn-map-svg') as unknown as SVGSVGElement;
+
+  private allScreens: HTMLElement[];
 
   constructor() {
+    this.allScreens = [
+      this.startScreen, this.modePickerScreen,
+      this.learnCardScreen, this.learnQuizScreen, this.learnCompleteScreen,
+      this.gameScreen, this.switchScreen,
+      this.resultScreen, this.twoplayerResultScreen,
+    ];
+
+    this.learnUI = new LearnUI(
+      this.learnMapSvg,
+      (screen) => this.showScreen(screen),
+      (mapData) => this.renderMap(mapData, this.learnMapSvg),
+      (_xp, _leveledUp, level) => this.showLevelUp(level),
+    );
+
+    this.twoPlayerUI = new TwoPlayerUI(
+      this.mapSvg,
+      (screen) => this.showScreen(screen),
+      (mapData) => this.renderMap(mapData, this.mapSvg),
+    );
+
     this.setupEventListeners();
+    this.updateXPBar();
   }
 
   private setupEventListeners(): void {
-    // Difficulty buttons
+    // Difficulty buttons → show mode picker
     document.querySelectorAll('.difficulty-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const target = e.currentTarget as HTMLElement;
         const difficulty = target.dataset.difficulty as Difficulty;
-        this.startGame(difficulty);
+        this.showModePicker(difficulty);
       });
+    });
+
+    // Mode picker buttons
+    document.getElementById('mode-learn-btn')!.addEventListener('click', () => {
+      this.learnUI.startLearn(this.currentDifficulty);
+    });
+
+    document.getElementById('mode-challenge-btn')!.addEventListener('click', () => {
+      const totalRegions = getTotalRegions(this.currentDifficulty);
+      if (!isChallengeUnlocked(this.currentDifficulty, totalRegions)) {
+        soundManager.play('wrong');
+        return;
+      }
+      this.startGame(this.currentDifficulty);
+    });
+
+    document.getElementById('mode-2p-btn')!.addEventListener('click', () => {
+      const totalRegions = getTotalRegions(this.currentDifficulty);
+      if (!isChallengeUnlocked(this.currentDifficulty, totalRegions)) {
+        soundManager.play('wrong');
+        return;
+      }
+      this.twoPlayerUI.start2P(this.currentDifficulty);
+    });
+
+    document.getElementById('mode-back-btn')!.addEventListener('click', () => {
+      this.showScreen('start');
     });
 
     // Hint button
@@ -51,14 +122,82 @@ class MapExplorerApp {
     });
   }
 
-  private showScreen(screen: 'start' | 'game' | 'result'): void {
-    this.startScreen.classList.remove('active');
-    this.gameScreen.classList.remove('active');
-    this.resultScreen.classList.remove('active');
+  private showScreen(screen: string): void {
+    this.allScreens.forEach(s => s.classList.remove('active'));
 
-    if (screen === 'start') this.startScreen.classList.add('active');
-    if (screen === 'game') this.gameScreen.classList.add('active');
-    if (screen === 'result') this.resultScreen.classList.add('active');
+    const screenMap: Record<string, HTMLElement> = {
+      'start': this.startScreen,
+      'mode-picker': this.modePickerScreen,
+      'learn-card': this.learnCardScreen,
+      'learn-quiz': this.learnQuizScreen,
+      'learn-complete': this.learnCompleteScreen,
+      'game': this.gameScreen,
+      'switch': this.switchScreen,
+      'result': this.resultScreen,
+      'twoplayer-result': this.twoplayerResultScreen,
+    };
+
+    const el = screenMap[screen];
+    if (el) el.classList.add('active');
+
+    // Update XP bar whenever returning to start
+    if (screen === 'start') {
+      this.updateXPBar();
+    }
+  }
+
+  private showModePicker(difficulty: Difficulty): void {
+    this.currentDifficulty = difficulty;
+    soundManager.play('click');
+
+    // Update title
+    document.getElementById('mode-picker-title')!.textContent =
+      `You picked ${DIFFICULTY_LABELS[difficulty]}!`;
+
+    // Update lock states
+    const totalRegions = getTotalRegions(difficulty);
+    const unlocked = isChallengeUnlocked(difficulty, totalRegions);
+
+    const challengeBtn = document.getElementById('mode-challenge-btn')!;
+    const twopBtn = document.getElementById('mode-2p-btn')!;
+    const challengeLock = document.getElementById('challenge-lock')!;
+    const twopLock = document.getElementById('twoplayer-lock')!;
+
+    if (unlocked) {
+      challengeBtn.classList.remove('locked');
+      twopBtn.classList.remove('locked');
+      challengeLock.textContent = '';
+      twopLock.textContent = '';
+    } else {
+      challengeBtn.classList.add('locked');
+      twopBtn.classList.add('locked');
+      challengeLock.textContent = '🔒';
+      twopLock.textContent = '🔒';
+    }
+
+    this.showScreen('mode-picker');
+  }
+
+  private updateXPBar(): void {
+    const xpData = getXPData();
+    const levelInfo = getXPForNextLevel(xpData.totalXP);
+    const pct = levelInfo.xpNeeded > 0
+      ? Math.min(100, Math.round((levelInfo.xpIntoLevel / levelInfo.xpNeeded) * 100))
+      : 100;
+
+    document.getElementById('xp-level')!.textContent = levelInfo.current;
+    document.getElementById('xp-bar-fill')!.style.width = `${pct}%`;
+    document.getElementById('xp-text')!.textContent = `${xpData.totalXP} XP`;
+  }
+
+  private showLevelUp(level: string): void {
+    const notification = document.getElementById('level-up-notification')!;
+    document.getElementById('level-up-text')!.textContent = `You're now a ${level}!`;
+    notification.style.display = 'flex';
+    soundManager.play('win');
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 3000);
   }
 
   private startGame(difficulty: Difficulty): void {
@@ -69,9 +208,18 @@ class MapExplorerApp {
     document.getElementById('message-display')!.textContent = '';
     document.getElementById('funfact-display')!.textContent = '';
 
+    // Ensure hint button is visible (may have been hidden by 2P mode)
+    document.getElementById('hint-btn')!.style.display = '';
+    // Hide 2P indicator
+    const indicator = document.getElementById('twoplayer-indicator');
+    if (indicator) indicator.style.display = 'none';
+
     // Render the map
     const mapData = getMapType(difficulty) === 'us' ? US_STATES_MAP : WORLD_MAP;
-    this.renderMap(mapData);
+    this.renderMap(mapData, this.mapSvg);
+
+    // Set up click handlers for solo game
+    this.setupSoloClickHandlers();
 
     this.updateDisplay();
     this.showScreen('game');
@@ -80,9 +228,20 @@ class MapExplorerApp {
     soundManager.play('click');
   }
 
-  private renderMap(mapData: MapData): void {
-    this.mapSvg.setAttribute('viewBox', mapData.viewBox);
-    this.mapSvg.innerHTML = '';
+  private setupSoloClickHandlers(): void {
+    this.mapSvg.querySelectorAll('.map-region').forEach(el => {
+      const clone = el.cloneNode(true) as SVGElement;
+      el.parentNode?.replaceChild(clone, el);
+      clone.addEventListener('click', () => {
+        const regionId = clone.getAttribute('data-id');
+        if (regionId) this.onRegionClick(regionId);
+      });
+    });
+  }
+
+  renderMap(mapData: MapData, svg: SVGSVGElement): void {
+    svg.setAttribute('viewBox', mapData.viewBox);
+    svg.innerHTML = '';
 
     // Render regions
     mapData.regions.forEach(region => {
@@ -90,10 +249,7 @@ class MapExplorerApp {
       path.setAttribute('d', region.path);
       path.setAttribute('data-id', region.id);
       path.classList.add('map-region');
-
-      path.addEventListener('click', () => this.onRegionClick(region.id));
-
-      this.mapSvg.appendChild(path);
+      svg.appendChild(path);
     });
 
     // Render labels
@@ -103,7 +259,7 @@ class MapExplorerApp {
       text.setAttribute('y', String(region.labelY));
       text.classList.add('map-label');
       text.textContent = region.abbreviation || '';
-      this.mapSvg.appendChild(text);
+      svg.appendChild(text);
     });
   }
 
@@ -121,6 +277,9 @@ class MapExplorerApp {
 
     if (result.correct) {
       soundManager.play('correct');
+
+      // Award challenge XP
+      awardXP(XP_AWARDS.CHALLENGE_CORRECT);
 
       // Animate correct
       if (regionEl) {
@@ -318,6 +477,14 @@ class MapExplorerApp {
       this.game.bestStreak,
       this.game.foundRegions
     );
+
+    // Award XP
+    if (won) {
+      awardXP(XP_AWARDS.CHALLENGE_WIN);
+      if (this.game.wrongAnswers === 0) {
+        awardXP(XP_AWARDS.PERFECT_GAME);
+      }
+    }
 
     // Play sound
     soundManager.play(won ? 'win' : 'lose');

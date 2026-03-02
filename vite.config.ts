@@ -12,7 +12,9 @@ export default defineConfig({
         spellingbee: 'spellingbee/index.html',
         'spellingbee-layla': 'spellingbee/layla/index.html',
         mapexplorer: 'mapexplorer/index.html',
-        'mapexplorer-layla': 'mapexplorer/layla/index.html'
+        'mapexplorer-layla': 'mapexplorer/layla/index.html',
+        'mapexplorer-passport': 'mapexplorer/passport/index.html',
+        'mapexplorer-parent': 'mapexplorer/parent/index.html'
       }
     }
   }

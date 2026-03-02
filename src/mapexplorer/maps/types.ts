@@ -8,6 +8,8 @@ export interface MapRegion {
   labelY: number;         // Label position Y (in viewBox coords)
   abbreviation?: string;  // e.g. "CA" for California
   funFact: string;
+  capital?: string;       // e.g. "Sacramento" for California
+  flagEmoji?: string;     // e.g. "🇺🇸" for United States (countries only)
 }
 
 export interface MapData {

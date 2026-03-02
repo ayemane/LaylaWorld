@@ -14,6 +14,14 @@
       <h1 class="game-title">Map Explorer</h1>
       <p class="subtitle">Discover the world!</p>
 
+      <div id="xp-bar" class="xp-bar">
+        <span id="xp-level" class="xp-level">Cadet</span>
+        <div class="xp-bar-container">
+          <div id="xp-bar-fill" class="xp-bar-fill" style="width: 0%"></div>
+        </div>
+        <span id="xp-text" class="xp-text">0 XP</span>
+      </div>
+
       <div class="difficulty-select">
         <h2>Choose your adventure:</h2>
         <button class="difficulty-btn easy" data-difficulty="easy">
@@ -39,12 +47,78 @@
         </button>
       </div>
 
-      <a href="/mapexplorer/layla/" class="stats-link">📊 Explorer Log</a>
+      <div class="start-links">
+        <a href="/mapexplorer/layla/" class="stats-link">📊 Explorer Log</a>
+        <a href="/mapexplorer/passport/" class="stats-link">🛂 My Passport</a>
+        <a href="/mapexplorer/parent/" class="stats-link gear-link">⚙️</a>
+      </div>
+    </div>
+
+    <!-- Mode Picker Screen -->
+    <div id="mode-picker-screen" class="screen">
+      <a href="/" class="home-link">&larr; Layla's World</a>
+      <h1 class="game-title" id="mode-picker-title">Scout</h1>
+      <div class="mode-picker">
+        <button class="mode-btn learn" id="mode-learn-btn">
+          <span class="mode-emoji">📖</span>
+          <span class="mode-label">Learn Mode</span>
+        </button>
+        <button class="mode-btn challenge" id="mode-challenge-btn">
+          <span class="mode-emoji">⚔️</span>
+          <span class="mode-label">Solo Challenge</span>
+          <span class="mode-lock" id="challenge-lock"></span>
+        </button>
+        <button class="mode-btn twoplayer" id="mode-2p-btn">
+          <span class="mode-emoji">👨‍👧</span>
+          <span class="mode-label">Play with Baba</span>
+          <span class="mode-lock" id="twoplayer-lock"></span>
+        </button>
+        <button class="mode-btn back" id="mode-back-btn">
+          <span class="mode-emoji">←</span>
+          <span class="mode-label">Back</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Learn Card Screen -->
+    <div id="learn-card-screen" class="screen">
+      <div class="learn-card">
+        <div id="learn-card-flag" class="learn-card-flag">🌍</div>
+        <h1 id="learn-card-name" class="learn-card-name">Country Name</h1>
+        <p id="learn-card-capital" class="learn-card-capital">Capital: City</p>
+        <p id="learn-card-fact" class="learn-card-fact">Fun fact here</p>
+        <div id="learn-card-progress" class="learn-card-progress">Card 1 of 5</div>
+        <button id="learn-quiz-me-btn" class="primary-btn">Got it! Quiz me!</button>
+      </div>
+    </div>
+
+    <!-- Learn Quiz Screen -->
+    <div id="learn-quiz-screen" class="screen">
+      <div class="prompt-container">
+        <div id="learn-quiz-prompt">Find Country!</div>
+        <div id="learn-quiz-progress">1 of 5</div>
+      </div>
+      <div class="map-container">
+        <svg id="learn-map-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <div id="learn-quiz-message" class="learn-quiz-msg"></div>
+    </div>
+
+    <!-- Learn Complete Screen -->
+    <div id="learn-complete-screen" class="screen">
+      <div class="learn-complete">
+        <h1>Batch Complete!</h1>
+        <div id="learn-complete-stamps" class="learn-complete-stamps"></div>
+        <p id="learn-complete-msg"></p>
+        <button id="learn-next-batch-btn" class="primary-btn">Next Batch</button>
+        <button id="learn-back-btn" class="secondary-btn">Back to Menu</button>
+      </div>
     </div>
 
     <!-- Game Screen -->
     <div id="game-screen" class="screen">
       <a href="/" class="home-link">&larr; Layla's World</a>
+      <div id="twoplayer-indicator" class="twoplayer-indicator" style="display:none"></div>
       <div class="game-header">
         <div id="score-display">Score: 0</div>
         <div id="streak-display">0</div>
@@ -70,6 +144,15 @@
       <div id="funfact-display"></div>
     </div>
 
+    <!-- Player Switch Screen (2P) -->
+    <div id="switch-screen" class="screen">
+      <div class="switch-overlay">
+        <h1 id="switch-player-name" class="switch-title">Layla's Turn!</h1>
+        <p id="switch-message">Round 1 of 6</p>
+        <button id="switch-ready-btn" class="primary-btn">I'm Ready!</button>
+      </div>
+    </div>
+
     <!-- Result Screen -->
     <div id="result-screen" class="screen">
       <div id="confetti-container"></div>
@@ -83,6 +166,28 @@
           <button id="change-level-btn" class="secondary-btn">Change Level</button>
         </div>
         <a href="/" class="home-link-inline">&larr; Back to Layla's World</a>
+      </div>
+    </div>
+
+    <!-- 2P Result Screen -->
+    <div id="twoplayer-result-screen" class="screen">
+      <div id="confetti-container-2p"></div>
+      <div class="result-content">
+        <h1 id="twoplayer-result-title" class="twoplayer-title">Layla Wins!</h1>
+        <div id="twoplayer-scores" class="twoplayer-scores"></div>
+        <div id="twoplayer-record" class="twoplayer-record"></div>
+        <div class="result-buttons">
+          <button id="twoplayer-rematch-btn" class="primary-btn">Rematch!</button>
+          <button id="twoplayer-back-btn" class="secondary-btn">Back to Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level Up Notification -->
+    <div id="level-up-notification" class="level-up-notification" style="display:none">
+      <div class="level-up-content">
+        <h2>Level Up!</h2>
+        <p id="level-up-text">You're now a Scout!</p>
       </div>
     </div>
   </div>

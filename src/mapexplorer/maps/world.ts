@@ -8,6 +8,8 @@ const regions: MapRegion[] = [
     labelX: 597,
     labelY: 297,
     funFact: 'Mount Kilimanjaro, the tallest mountain in Africa, is in Tanzania!',
+    capital: 'Dodoma',
+    flagEmoji: '🇹🇿',
   },
   {
     id: 'western-sahara',
@@ -16,6 +18,8 @@ const regions: MapRegion[] = [
     labelX: 466,
     labelY: 212,
     funFact: 'Western Sahara is a country with its own unique culture and history!',
+    capital: 'Laayoune',
+    flagEmoji: '🇪🇭',
   },
   {
     id: 'canada',
@@ -24,6 +28,8 @@ const regions: MapRegion[] = [
     labelX: 226,
     labelY: 108,
     funFact: 'Canada has more lakes than all other countries combined!',
+    capital: 'Ottawa',
+    flagEmoji: '🇨🇦',
   },
   {
     id: 'united-states',
@@ -32,6 +38,8 @@ const regions: MapRegion[] = [
     labelX: 186,
     labelY: 152,
     funFact: 'The United States has 50 states and is home to the Grand Canyon!',
+    capital: 'Washington D.C.',
+    flagEmoji: '🇺🇸',
   },
   {
     id: 'kazakhstan',
@@ -40,6 +48,8 @@ const regions: MapRegion[] = [
     labelX: 688,
     labelY: 145,
     funFact: 'Kazakhstan is the largest landlocked country in the world!',
+    capital: 'Astana',
+    flagEmoji: '🇰🇿',
   },
   {
     id: 'uzbekistan',
@@ -48,6 +58,8 @@ const regions: MapRegion[] = [
     labelX: 676,
     labelY: 163,
     funFact: 'Uzbekistan is a country with its own unique culture and history!',
+    capital: 'Tashkent',
+    flagEmoji: '🇺🇿',
   },
   {
     id: 'papua-new-guinea',
@@ -56,6 +68,8 @@ const regions: MapRegion[] = [
     labelX: 906,
     labelY: 298,
     funFact: 'Papua New Guinea has over 800 languages — more than any country!',
+    capital: 'Port Moresby',
+    flagEmoji: '🇵🇬',
   },
   {
     id: 'indonesia',
@@ -64,6 +78,8 @@ const regions: MapRegion[] = [
     labelX: 828,
     labelY: 286,
     funFact: 'Indonesia has over 17,000 islands — more than any country!',
+    capital: 'Jakarta',
+    flagEmoji: '🇮🇩',
   },
   {
     id: 'argentina',
@@ -72,6 +88,8 @@ const regions: MapRegion[] = [
     labelX: 318,
     labelY: 379,
     funFact: 'Argentina is famous for the tango dance and huge grasslands called the Pampas!',
+    capital: 'Buenos Aires',
+    flagEmoji: '🇦🇷',
   },
   {
     id: 'chile',
@@ -80,6 +98,8 @@ const regions: MapRegion[] = [
     labelX: 300,
     labelY: 389,
     funFact: 'Chile is the longest country in the world from north to south!',
+    capital: 'Santiago',
+    flagEmoji: '🇨🇱',
   },
   {
     id: 'dr-congo',
@@ -88,6 +108,8 @@ const regions: MapRegion[] = [
     labelX: 566,
     labelY: 288,
     funFact: 'The Congo has the second largest rainforest in the world!',
+    capital: 'Kinshasa',
+    flagEmoji: '🇨🇩',
   },
   {
     id: 'somalia',
@@ -96,6 +118,8 @@ const regions: MapRegion[] = [
     labelX: 628,
     labelY: 267,
     funFact: 'Somalia is a country with its own unique culture and history!',
+    capital: 'Mogadishu',
+    flagEmoji: '🇸🇴',
   },
   {
     id: 'kenya',
@@ -104,6 +128,8 @@ const regions: MapRegion[] = [
     labelX: 606,
     labelY: 278,
     funFact: 'Kenya is famous for safaris where you can see lions, elephants, and giraffes!',
+    capital: 'Nairobi',
+    flagEmoji: '🇰🇪',
   },
   {
     id: 'sudan',
@@ -112,6 +138,8 @@ const regions: MapRegion[] = [
     labelX: 583,
     labelY: 235,
     funFact: 'Sudan has more pyramids than Egypt!',
+    capital: 'Khartoum',
+    flagEmoji: '🇸🇩',
   },
   {
     id: 'chad',
@@ -120,6 +148,8 @@ const regions: MapRegion[] = [
     labelX: 552,
     labelY: 237,
     funFact: 'Chad is a country with its own unique culture and history!',
+    capital: 'N\'Djamena',
+    flagEmoji: '🇹🇩',
   },
   {
     id: 'dominican-republic',
@@ -128,6 +158,8 @@ const regions: MapRegion[] = [
     labelX: 303,
     labelY: 227,
     funFact: 'Dominican Republic is a country with its own unique culture and history!',
+    capital: 'Santo Domingo',
+    flagEmoji: '🇩🇴',
   },
   {
     id: 'russia',
@@ -136,6 +168,8 @@ const regions: MapRegion[] = [
     labelX: 770,
     labelY: 107,
     funFact: 'Russia is the biggest country in the world — it spans 11 time zones!',
+    capital: 'Moscow',
+    flagEmoji: '🇷🇺',
   },
   {
     id: 'norway',
@@ -144,6 +178,8 @@ const regions: MapRegion[] = [
     labelX: 543,
     labelY: 87,
     funFact: 'Norway has fjords — deep valleys filled with ocean water!',
+    capital: 'Oslo',
+    flagEmoji: '🇳🇴',
   },
   {
     id: 'greenland',
@@ -152,6 +188,8 @@ const regions: MapRegion[] = [
     labelX: 384,
     labelY: 71,
     funFact: 'Greenland is the largest island in the world but is mostly covered in ice!',
+    capital: 'Nuuk',
+    flagEmoji: '🇬🇱',
   },
   {
     id: 'south-africa',
@@ -160,6 +198,8 @@ const regions: MapRegion[] = [
     labelX: 570,
     labelY: 361,
     funFact: 'South Africa has three capital cities and penguins on its beaches!',
+    capital: 'Pretoria',
+    flagEmoji: '🇿🇦',
   },
   {
     id: 'mexico',
@@ -168,6 +208,8 @@ const regions: MapRegion[] = [
     labelX: 214,
     labelY: 213,
     funFact: 'Mexico invented chocolate — the ancient Aztecs drank it as a spicy drink!',
+    capital: 'Mexico City',
+    flagEmoji: '🇲🇽',
   },
   {
     id: 'uruguay',
@@ -176,6 +218,8 @@ const regions: MapRegion[] = [
     labelX: 344,
     labelY: 372,
     funFact: 'Uruguay is a country with its own unique culture and history!',
+    capital: 'Montevideo',
+    flagEmoji: '🇺🇾',
   },
   {
     id: 'brazil',
@@ -184,6 +228,8 @@ const regions: MapRegion[] = [
     labelX: 352,
     labelY: 310,
     funFact: 'Brazil is home to the Amazon River, which carries more water than any other river!',
+    capital: 'Brasilia',
+    flagEmoji: '🇧🇷',
   },
   {
     id: 'bolivia',
@@ -192,6 +238,8 @@ const regions: MapRegion[] = [
     labelX: 319,
     labelY: 327,
     funFact: 'Bolivia is a country with its own unique culture and history!',
+    capital: 'Sucre',
+    flagEmoji: '🇧🇴',
   },
   {
     id: 'peru',
@@ -200,6 +248,8 @@ const regions: MapRegion[] = [
     labelX: 292,
     labelY: 306,
     funFact: 'Peru is home to Machu Picchu, an ancient city high in the mountains!',
+    capital: 'Lima',
+    flagEmoji: '🇵🇪',
   },
   {
     id: 'colombia',
@@ -208,6 +258,8 @@ const regions: MapRegion[] = [
     labelX: 296,
     labelY: 269,
     funFact: 'Colombia produces the most emeralds in the world!',
+    capital: 'Bogota',
+    flagEmoji: '🇨🇴',
   },
   {
     id: 'panama',
@@ -216,6 +268,8 @@ const regions: MapRegion[] = [
     labelX: 276,
     labelY: 256,
     funFact: 'Panama is a country with its own unique culture and history!',
+    capital: 'Panama City',
+    flagEmoji: '🇵🇦',
   },
   {
     id: 'costa-rica',
@@ -224,6 +278,8 @@ const regions: MapRegion[] = [
     labelX: 265,
     labelY: 252,
     funFact: 'Costa Rica is a country with its own unique culture and history!',
+    capital: 'San Jose',
+    flagEmoji: '🇨🇷',
   },
   {
     id: 'nicaragua',
@@ -232,6 +288,8 @@ const regions: MapRegion[] = [
     labelX: 263,
     labelY: 244,
     funFact: 'Nicaragua is a country with its own unique culture and history!',
+    capital: 'Managua',
+    flagEmoji: '🇳🇮',
   },
   {
     id: 'honduras',
@@ -240,6 +298,8 @@ const regions: MapRegion[] = [
     labelX: 258,
     labelY: 239,
     funFact: 'Honduras is a country with its own unique culture and history!',
+    capital: 'Tegucigalpa',
+    flagEmoji: '🇭🇳',
   },
   {
     id: 'guatemala',
@@ -248,6 +308,8 @@ const regions: MapRegion[] = [
     labelX: 248,
     labelY: 236,
     funFact: 'Guatemala is a country with its own unique culture and history!',
+    capital: 'Guatemala City',
+    flagEmoji: '🇬🇹',
   },
   {
     id: 'venezuela',
@@ -256,6 +318,8 @@ const regions: MapRegion[] = [
     labelX: 315,
     labelY: 260,
     funFact: 'Venezuela has the tallest waterfall in the world — Angel Falls!',
+    capital: 'Caracas',
+    flagEmoji: '🇻🇪',
   },
   {
     id: 'guyana',
@@ -264,6 +328,8 @@ const regions: MapRegion[] = [
     labelX: 335,
     labelY: 267,
     funFact: 'Guyana is a country with its own unique culture and history!',
+    capital: 'Georgetown',
+    flagEmoji: '🇬🇾',
   },
   {
     id: 'suriname',
@@ -272,6 +338,8 @@ const regions: MapRegion[] = [
     labelX: 344,
     labelY: 268,
     funFact: 'Suriname is a country with its own unique culture and history!',
+    capital: 'Paramaribo',
+    flagEmoji: '🇸🇷',
   },
   {
     id: 'france',
@@ -280,6 +348,8 @@ const regions: MapRegion[] = [
     labelX: 492,
     labelY: 161,
     funFact: 'France is famous for the Eiffel Tower and delicious croissants!',
+    capital: 'Paris',
+    flagEmoji: '🇫🇷',
   },
   {
     id: 'ecuador',
@@ -288,6 +358,8 @@ const regions: MapRegion[] = [
     labelX: 281,
     labelY: 284,
     funFact: 'Ecuador is a country with its own unique culture and history!',
+    capital: 'Quito',
+    flagEmoji: '🇪🇨',
   },
   {
     id: 'cuba',
@@ -296,6 +368,8 @@ const regions: MapRegion[] = [
     labelX: 279,
     labelY: 220,
     funFact: 'Cuba is the largest island in the Caribbean!',
+    capital: 'Havana',
+    flagEmoji: '🇨🇺',
   },
   {
     id: 'zimbabwe',
@@ -304,6 +378,8 @@ const regions: MapRegion[] = [
     labelX: 583,
     labelY: 333,
     funFact: 'Zimbabwe is a country with its own unique culture and history!',
+    capital: 'Harare',
+    flagEmoji: '🇿🇼',
   },
   {
     id: 'botswana',
@@ -312,6 +388,8 @@ const regions: MapRegion[] = [
     labelX: 566,
     labelY: 342,
     funFact: 'Botswana is a country with its own unique culture and history!',
+    capital: 'Gaborone',
+    flagEmoji: '🇧🇼',
   },
   {
     id: 'namibia',
@@ -320,6 +398,8 @@ const regions: MapRegion[] = [
     labelX: 548,
     labelY: 342,
     funFact: 'Namibia is a country with its own unique culture and history!',
+    capital: 'Windhoek',
+    flagEmoji: '🇳🇦',
   },
   {
     id: 'senegal',
@@ -328,6 +408,8 @@ const regions: MapRegion[] = [
     labelX: 459,
     labelY: 240,
     funFact: 'Senegal is a country with its own unique culture and history!',
+    capital: 'Dakar',
+    flagEmoji: '🇸🇳',
   },
   {
     id: 'mali',
@@ -336,6 +418,8 @@ const regions: MapRegion[] = [
     labelX: 490,
     labelY: 232,
     funFact: 'Mali is a country with its own unique culture and history!',
+    capital: 'Bamako',
+    flagEmoji: '🇲🇱',
   },
   {
     id: 'mauritania',
@@ -344,6 +428,8 @@ const regions: MapRegion[] = [
     labelX: 471,
     labelY: 224,
     funFact: 'Mauritania is a country with its own unique culture and history!',
+    capital: 'Nouakchott',
+    flagEmoji: '🇲🇷',
   },
   {
     id: 'benin',
@@ -352,6 +438,8 @@ const regions: MapRegion[] = [
     labelX: 507,
     labelY: 253,
     funFact: 'Benin is a country with its own unique culture and history!',
+    capital: 'Porto-Novo',
+    flagEmoji: '🇧🇯',
   },
   {
     id: 'niger',
@@ -360,6 +448,8 @@ const regions: MapRegion[] = [
     labelX: 526,
     labelY: 232,
     funFact: 'Niger is a country with its own unique culture and history!',
+    capital: 'Niamey',
+    flagEmoji: '🇳🇪',
   },
   {
     id: 'nigeria',
@@ -368,6 +458,8 @@ const regions: MapRegion[] = [
     labelX: 522,
     labelY: 253,
     funFact: 'Nigeria has over 500 different languages spoken!',
+    capital: 'Abuja',
+    flagEmoji: '🇳🇬',
   },
   {
     id: 'cameroon',
@@ -376,6 +468,8 @@ const regions: MapRegion[] = [
     labelX: 535,
     labelY: 264,
     funFact: 'Cameroon is a country with its own unique culture and history!',
+    capital: 'Yaounde',
+    flagEmoji: '🇨🇲',
   },
   {
     id: 'togo',
@@ -384,6 +478,8 @@ const regions: MapRegion[] = [
     labelX: 503,
     labelY: 256,
     funFact: 'Togo is a country with its own unique culture and history!',
+    capital: 'Lome',
+    flagEmoji: '🇹🇬',
   },
   {
     id: 'ghana',
@@ -392,6 +488,8 @@ const regions: MapRegion[] = [
     labelX: 497,
     labelY: 258,
     funFact: 'Ghana is a country with its own unique culture and history!',
+    capital: 'Accra',
+    flagEmoji: '🇬🇭',
   },
   {
     id: 'ivory-coast',
@@ -400,6 +498,8 @@ const regions: MapRegion[] = [
     labelX: 484,
     labelY: 259,
     funFact: 'Ivory Coast is a country with its own unique culture and history!',
+    capital: 'Yamoussoukro',
+    flagEmoji: '🇨🇮',
   },
   {
     id: 'guinea',
@@ -408,6 +508,8 @@ const regions: MapRegion[] = [
     labelX: 469,
     labelY: 251,
     funFact: 'Guinea is a country with its own unique culture and history!',
+    capital: 'Conakry',
+    flagEmoji: '🇬🇳',
   },
   {
     id: 'guinea-bissau',
@@ -416,6 +518,8 @@ const regions: MapRegion[] = [
     labelX: 458,
     labelY: 246,
     funFact: 'Guinea-Bissau is a country with its own unique culture and history!',
+    capital: 'Bissau',
+    flagEmoji: '🇬🇼',
   },
   {
     id: 'liberia',
@@ -424,6 +528,8 @@ const regions: MapRegion[] = [
     labelX: 474,
     labelY: 262,
     funFact: 'Liberia is a country with its own unique culture and history!',
+    capital: 'Monrovia',
+    flagEmoji: '🇱🇷',
   },
   {
     id: 'burkina-faso',
@@ -432,6 +538,8 @@ const regions: MapRegion[] = [
     labelX: 495,
     labelY: 246,
     funFact: 'Burkina Faso is a country with its own unique culture and history!',
+    capital: 'Ouagadougou',
+    flagEmoji: '🇧🇫',
   },
   {
     id: 'central-african-republic',
@@ -440,6 +548,8 @@ const regions: MapRegion[] = [
     labelX: 557,
     labelY: 262,
     funFact: 'Central African Republic is a country with its own unique culture and history!',
+    capital: 'Bangui',
+    flagEmoji: '🇨🇫',
   },
   {
     id: 'congo',
@@ -448,6 +558,8 @@ const regions: MapRegion[] = [
     labelX: 542,
     labelY: 282,
     funFact: 'Congo is a country with its own unique culture and history!',
+    capital: 'Brazzaville',
+    flagEmoji: '🇨🇬',
   },
   {
     id: 'gabon',
@@ -456,6 +568,8 @@ const regions: MapRegion[] = [
     labelX: 533,
     labelY: 282,
     funFact: 'Gabon is a country with its own unique culture and history!',
+    capital: 'Libreville',
+    flagEmoji: '🇬🇦',
   },
   {
     id: 'zambia',
@@ -464,6 +578,8 @@ const regions: MapRegion[] = [
     labelX: 577,
     labelY: 317,
     funFact: 'Zambia is a country with its own unique culture and history!',
+    capital: 'Lusaka',
+    flagEmoji: '🇿🇲',
   },
   {
     id: 'malawi',
@@ -472,6 +588,8 @@ const regions: MapRegion[] = [
     labelX: 595,
     labelY: 317,
     funFact: 'Malawi is a country with its own unique culture and history!',
+    capital: 'Lilongwe',
+    flagEmoji: '🇲🇼',
   },
   {
     id: 'mozambique',
@@ -480,6 +598,8 @@ const regions: MapRegion[] = [
     labelX: 599,
     labelY: 328,
     funFact: 'Mozambique is a country with its own unique culture and history!',
+    capital: 'Maputo',
+    flagEmoji: '🇲🇿',
   },
   {
     id: 'angola',
@@ -488,6 +608,8 @@ const regions: MapRegion[] = [
     labelX: 549,
     labelY: 314,
     funFact: 'Angola is a country with its own unique culture and history!',
+    capital: 'Luanda',
+    flagEmoji: '🇦🇴',
   },
   {
     id: 'madagascar',
@@ -496,6 +618,8 @@ const regions: MapRegion[] = [
     labelX: 630,
     labelY: 334,
     funFact: 'Most animals on Madagascar are found nowhere else on Earth!',
+    capital: 'Antananarivo',
+    flagEmoji: '🇲🇬',
   },
   {
     id: 'tunisia',
@@ -504,6 +628,8 @@ const regions: MapRegion[] = [
     labelX: 527,
     labelY: 185,
     funFact: 'Tunisia is a country with its own unique culture and history!',
+    capital: 'Tunis',
+    flagEmoji: '🇹🇳',
   },
   {
     id: 'algeria',
@@ -512,6 +638,8 @@ const regions: MapRegion[] = [
     labelX: 507,
     labelY: 201,
     funFact: 'Algeria is the largest country in Africa!',
+    capital: 'Algiers',
+    flagEmoji: '🇩🇿',
   },
   {
     id: 'jordan',
@@ -520,6 +648,8 @@ const regions: MapRegion[] = [
     labelX: 603,
     labelY: 193,
     funFact: 'Jordan is a country with its own unique culture and history!',
+    capital: 'Amman',
+    flagEmoji: '🇯🇴',
   },
   {
     id: 'iraq',
@@ -528,6 +658,8 @@ const regions: MapRegion[] = [
     labelX: 622,
     labelY: 188,
     funFact: 'Iraq is called the Cradle of Civilization — writing was invented there!',
+    capital: 'Baghdad',
+    flagEmoji: '🇮🇶',
   },
   {
     id: 'oman',
@@ -536,6 +668,8 @@ const regions: MapRegion[] = [
     labelX: 657,
     labelY: 222,
     funFact: 'Oman is a country with its own unique culture and history!',
+    capital: 'Muscat',
+    flagEmoji: '🇴🇲',
   },
   {
     id: 'cambodia',
@@ -544,6 +678,8 @@ const regions: MapRegion[] = [
     labelX: 793,
     labelY: 245,
     funFact: 'Cambodia is a country with its own unique culture and history!',
+    capital: 'Phnom Penh',
+    flagEmoji: '🇰🇭',
   },
   {
     id: 'thailand',
@@ -552,6 +688,8 @@ const regions: MapRegion[] = [
     labelX: 782,
     labelY: 238,
     funFact: 'Thailand is the only Southeast Asian country never colonized by Europeans!',
+    capital: 'Bangkok',
+    flagEmoji: '🇹🇭',
   },
   {
     id: 'laos',
@@ -560,6 +698,8 @@ const regions: MapRegion[] = [
     labelX: 790,
     labelY: 228,
     funFact: 'Laos is a country with its own unique culture and history!',
+    capital: 'Vientiane',
+    flagEmoji: '🇱🇦',
   },
   {
     id: 'myanmar',
@@ -568,6 +708,8 @@ const regions: MapRegion[] = [
     labelX: 769,
     labelY: 221,
     funFact: 'Myanmar has over 2,000 pagodas in the city of Bagan!',
+    capital: 'Naypyidaw',
+    flagEmoji: '🇲🇲',
   },
   {
     id: 'vietnam',
@@ -576,6 +718,8 @@ const regions: MapRegion[] = [
     labelX: 797,
     labelY: 233,
     funFact: 'Vietnam is the largest exporter of black pepper in the world!',
+    capital: 'Hanoi',
+    flagEmoji: '🇻🇳',
   },
   {
     id: 'north-korea',
@@ -584,6 +728,8 @@ const regions: MapRegion[] = [
     labelX: 855,
     labelY: 168,
     funFact: 'North Korea and South Korea are still technically at war since 1950!',
+    capital: 'Pyongyang',
+    flagEmoji: '🇰🇵',
   },
   {
     id: 'south-korea',
@@ -592,6 +738,8 @@ const regions: MapRegion[] = [
     labelX: 857,
     labelY: 178,
     funFact: 'South Korea invented the metal printing press before Europe!',
+    capital: 'Seoul',
+    flagEmoji: '🇰🇷',
   },
   {
     id: 'mongolia',
@@ -600,6 +748,8 @@ const regions: MapRegion[] = [
     labelX: 787,
     labelY: 149,
     funFact: 'Mongolia has more horses than people!',
+    capital: 'Ulaanbaatar',
+    flagEmoji: '🇲🇳',
   },
   {
     id: 'india',
@@ -608,6 +758,8 @@ const regions: MapRegion[] = [
     labelX: 722,
     labelY: 216,
     funFact: 'India invented the number zero and makes the most movies every year!',
+    capital: 'New Delhi',
+    flagEmoji: '🇮🇳',
   },
   {
     id: 'bangladesh',
@@ -616,6 +768,8 @@ const regions: MapRegion[] = [
     labelX: 752,
     labelY: 213,
     funFact: 'Bangladesh is a country with its own unique culture and history!',
+    capital: 'Dhaka',
+    flagEmoji: '🇧🇩',
   },
   {
     id: 'bhutan',
@@ -624,6 +778,8 @@ const regions: MapRegion[] = [
     labelX: 753,
     labelY: 203,
     funFact: 'Bhutan is a country with its own unique culture and history!',
+    capital: 'Thimphu',
+    flagEmoji: '🇧🇹',
   },
   {
     id: 'nepal',
@@ -632,6 +788,8 @@ const regions: MapRegion[] = [
     labelX: 735,
     labelY: 201,
     funFact: 'Nepal has Mount Everest, the tallest mountain on Earth!',
+    capital: 'Kathmandu',
+    flagEmoji: '🇳🇵',
   },
   {
     id: 'pakistan',
@@ -640,6 +798,8 @@ const regions: MapRegion[] = [
     labelX: 694,
     labelY: 196,
     funFact: 'Pakistan has the second tallest mountain in the world — K2!',
+    capital: 'Islamabad',
+    flagEmoji: '🇵🇰',
   },
   {
     id: 'afghanistan',
@@ -648,6 +808,8 @@ const regions: MapRegion[] = [
     labelX: 685,
     labelY: 185,
     funFact: 'Afghanistan is one of the oldest countries with over 5,000 years of history!',
+    capital: 'Kabul',
+    flagEmoji: '🇦🇫',
   },
   {
     id: 'tajikistan',
@@ -656,6 +818,8 @@ const regions: MapRegion[] = [
     labelX: 698,
     labelY: 172,
     funFact: 'Tajikistan is a country with its own unique culture and history!',
+    capital: 'Dushanbe',
+    flagEmoji: '🇹🇯',
   },
   {
     id: 'kyrgyzstan',
@@ -664,6 +828,8 @@ const regions: MapRegion[] = [
     labelX: 708,
     labelY: 164,
     funFact: 'Kyrgyzstan is a country with its own unique culture and history!',
+    capital: 'Bishkek',
+    flagEmoji: '🇰🇬',
   },
   {
     id: 'iran',
@@ -672,6 +838,8 @@ const regions: MapRegion[] = [
     labelX: 652,
     labelY: 189,
     funFact: 'Iran was once called Persia and has a history going back thousands of years!',
+    capital: 'Tehran',
+    flagEmoji: '🇮🇷',
   },
   {
     id: 'syria',
@@ -680,6 +848,8 @@ const regions: MapRegion[] = [
     labelX: 608,
     labelY: 182,
     funFact: 'Syria is a country with its own unique culture and history!',
+    capital: 'Damascus',
+    flagEmoji: '🇸🇾',
   },
   {
     id: 'armenia',
@@ -688,6 +858,8 @@ const regions: MapRegion[] = [
     labelX: 626,
     labelY: 168,
     funFact: 'Armenia is a country with its own unique culture and history!',
+    capital: 'Yerevan',
+    flagEmoji: '🇦🇲',
   },
   {
     id: 'sweden',
@@ -696,6 +868,8 @@ const regions: MapRegion[] = [
     labelX: 546,
     labelY: 105,
     funFact: 'Sweden invented dynamite, the zipper, and Spotify!',
+    capital: 'Stockholm',
+    flagEmoji: '🇸🇪',
   },
   {
     id: 'belarus',
@@ -704,6 +878,8 @@ const regions: MapRegion[] = [
     labelX: 578,
     labelY: 131,
     funFact: 'Belarus is a country with its own unique culture and history!',
+    capital: 'Minsk',
+    flagEmoji: '🇧🇾',
   },
   {
     id: 'ukraine',
@@ -712,6 +888,8 @@ const regions: MapRegion[] = [
     labelX: 587,
     labelY: 143,
     funFact: 'Ukraine is the largest country entirely in Europe!',
+    capital: 'Kyiv',
+    flagEmoji: '🇺🇦',
   },
   {
     id: 'poland',
@@ -720,6 +898,8 @@ const regions: MapRegion[] = [
     labelX: 554,
     labelY: 134,
     funFact: 'Poland is home to the largest castle in the world — Malbork Castle!',
+    capital: 'Warsaw',
+    flagEmoji: '🇵🇱',
   },
   {
     id: 'austria',
@@ -728,6 +908,8 @@ const regions: MapRegion[] = [
     labelX: 539,
     labelY: 147,
     funFact: 'Mozart, one of the greatest musicians ever, was born in Austria!',
+    capital: 'Vienna',
+    flagEmoji: '🇦🇹',
   },
   {
     id: 'hungary',
@@ -736,6 +918,8 @@ const regions: MapRegion[] = [
     labelX: 554,
     labelY: 148,
     funFact: 'Hungary invented the Rubik\'s Cube!',
+    capital: 'Budapest',
+    flagEmoji: '🇭🇺',
   },
   {
     id: 'moldova',
@@ -744,6 +928,8 @@ const regions: MapRegion[] = [
     labelX: 579,
     labelY: 148,
     funFact: 'Moldova is a country with its own unique culture and history!',
+    capital: 'Chisinau',
+    flagEmoji: '🇲🇩',
   },
   {
     id: 'romania',
@@ -752,6 +938,8 @@ const regions: MapRegion[] = [
     labelX: 570,
     labelY: 152,
     funFact: 'Romania is home to the legend of Dracula!',
+    capital: 'Bucharest',
+    flagEmoji: '🇷🇴',
   },
   {
     id: 'lithuania',
@@ -760,6 +948,8 @@ const regions: MapRegion[] = [
     labelX: 567,
     labelY: 126,
     funFact: 'Lithuania is a country with its own unique culture and history!',
+    capital: 'Vilnius',
+    flagEmoji: '🇱🇹',
   },
   {
     id: 'latvia',
@@ -768,6 +958,8 @@ const regions: MapRegion[] = [
     labelX: 569,
     labelY: 121,
     funFact: 'Latvia is a country with its own unique culture and history!',
+    capital: 'Riga',
+    flagEmoji: '🇱🇻',
   },
   {
     id: 'estonia',
@@ -776,6 +968,8 @@ const regions: MapRegion[] = [
     labelX: 572,
     labelY: 116,
     funFact: 'Estonia is a country with its own unique culture and history!',
+    capital: 'Tallinn',
+    flagEmoji: '🇪🇪',
   },
   {
     id: 'germany',
@@ -784,6 +978,8 @@ const regions: MapRegion[] = [
     labelX: 529,
     labelY: 137,
     funFact: 'Germany is where the gummy bear was invented in 1922!',
+    capital: 'Berlin',
+    flagEmoji: '🇩🇪',
   },
   {
     id: 'bulgaria',
@@ -792,6 +988,8 @@ const regions: MapRegion[] = [
     labelX: 570,
     labelY: 161,
     funFact: 'Bulgaria is a country with its own unique culture and history!',
+    capital: 'Sofia',
+    flagEmoji: '🇧🇬',
   },
   {
     id: 'greece',
@@ -800,6 +998,8 @@ const regions: MapRegion[] = [
     labelX: 563,
     labelY: 171,
     funFact: 'Greece is where the Olympic Games were invented over 2,700 years ago!',
+    capital: 'Athens',
+    flagEmoji: '🇬🇷',
   },
   {
     id: 'turkey',
@@ -808,6 +1008,8 @@ const regions: MapRegion[] = [
     labelX: 598,
     labelY: 171,
     funFact: 'Turkey sits on two continents — Europe and Asia!',
+    capital: 'Ankara',
+    flagEmoji: '🇹🇷',
   },
   {
     id: 'albania',
@@ -816,6 +1018,8 @@ const regions: MapRegion[] = [
     labelX: 556,
     labelY: 165,
     funFact: 'Albania is a country with its own unique culture and history!',
+    capital: 'Tirana',
+    flagEmoji: '🇦🇱',
   },
   {
     id: 'croatia',
@@ -824,6 +1028,8 @@ const regions: MapRegion[] = [
     labelX: 546,
     labelY: 154,
     funFact: 'Croatia is a country with its own unique culture and history!',
+    capital: 'Zagreb',
+    flagEmoji: '🇭🇷',
   },
   {
     id: 'switzerland',
@@ -832,6 +1038,8 @@ const regions: MapRegion[] = [
     labelX: 523,
     labelY: 149,
     funFact: 'Switzerland makes the best chocolate and cheese!',
+    capital: 'Bern',
+    flagEmoji: '🇨🇭',
   },
   {
     id: 'belgium',
@@ -840,6 +1048,8 @@ const regions: MapRegion[] = [
     labelX: 513,
     labelY: 139,
     funFact: 'Belgium is a country with its own unique culture and history!',
+    capital: 'Brussels',
+    flagEmoji: '🇧🇪',
   },
   {
     id: 'netherlands',
@@ -848,6 +1058,8 @@ const regions: MapRegion[] = [
     labelX: 515,
     labelY: 134,
     funFact: 'Netherlands is a country with its own unique culture and history!',
+    capital: 'Amsterdam',
+    flagEmoji: '🇳🇱',
   },
   {
     id: 'portugal',
@@ -856,6 +1068,8 @@ const regions: MapRegion[] = [
     labelX: 478,
     labelY: 169,
     funFact: 'Portuguese explorers were the first Europeans to reach Japan!',
+    capital: 'Lisbon',
+    flagEmoji: '🇵🇹',
   },
   {
     id: 'spain',
@@ -864,6 +1078,8 @@ const regions: MapRegion[] = [
     labelX: 490,
     labelY: 167,
     funFact: 'Spain has a tomato-throwing festival called La Tomatina!',
+    capital: 'Madrid',
+    flagEmoji: '🇪🇸',
   },
   {
     id: 'ireland',
@@ -872,6 +1088,8 @@ const regions: MapRegion[] = [
     labelX: 478,
     labelY: 131,
     funFact: 'Ireland is called the Emerald Isle because it is so green!',
+    capital: 'Dublin',
+    flagEmoji: '🇮🇪',
   },
   {
     id: 'australia',
@@ -880,6 +1098,8 @@ const regions: MapRegion[] = [
     labelX: 876,
     labelY: 352,
     funFact: 'Australia has animals found nowhere else, like kangaroos and platypuses!',
+    capital: 'Canberra',
+    flagEmoji: '🇦🇺',
   },
   {
     id: 'sri-lanka',
@@ -888,6 +1108,8 @@ const regions: MapRegion[] = [
     labelX: 725,
     labelY: 258,
     funFact: 'Sri Lanka is a country with its own unique culture and history!',
+    capital: 'Sri Jayawardenepura Kotte',
+    flagEmoji: '🇱🇰',
   },
   {
     id: 'china',
@@ -896,6 +1118,8 @@ const regions: MapRegion[] = [
     labelX: 790,
     labelY: 178,
     funFact: 'China built the Great Wall, which is over 13,000 miles long!',
+    capital: 'Beijing',
+    flagEmoji: '🇨🇳',
   },
   {
     id: 'taiwan',
@@ -904,6 +1128,8 @@ const regions: MapRegion[] = [
     labelX: 838,
     labelY: 214,
     funFact: 'Taiwan is a country with its own unique culture and history!',
+    capital: 'Taipei',
+    flagEmoji: '🇹🇼',
   },
   {
     id: 'italy',
@@ -912,6 +1138,8 @@ const regions: MapRegion[] = [
     labelX: 534,
     labelY: 161,
     funFact: 'Italy is shaped like a boot and is where pizza was invented!',
+    capital: 'Rome',
+    flagEmoji: '🇮🇹',
   },
   {
     id: 'denmark',
@@ -920,6 +1148,8 @@ const regions: MapRegion[] = [
     labelX: 528,
     labelY: 123,
     funFact: 'Denmark is a country with its own unique culture and history!',
+    capital: 'Copenhagen',
+    flagEmoji: '🇩🇰',
   },
   {
     id: 'united-kingdom',
@@ -928,6 +1158,8 @@ const regions: MapRegion[] = [
     labelX: 492,
     labelY: 129,
     funFact: 'The United Kingdom includes England, Scotland, Wales, and Northern Ireland!',
+    capital: 'London',
+    flagEmoji: '🇬🇧',
   },
   {
     id: 'iceland',
@@ -936,6 +1168,8 @@ const regions: MapRegion[] = [
     labelX: 448,
     labelY: 98,
     funFact: 'Iceland has geysers that shoot hot water high into the air!',
+    capital: 'Reykjavik',
+    flagEmoji: '🇮🇸',
   },
   {
     id: 'azerbaijan',
@@ -944,6 +1178,8 @@ const regions: MapRegion[] = [
     labelX: 633,
     labelY: 168,
     funFact: 'Azerbaijan is a country with its own unique culture and history!',
+    capital: 'Baku',
+    flagEmoji: '🇦🇿',
   },
   {
     id: 'georgia',
@@ -952,6 +1188,8 @@ const regions: MapRegion[] = [
     labelX: 621,
     labelY: 162,
     funFact: 'Georgia is a country with its own unique culture and history!',
+    capital: 'Tbilisi',
+    flagEmoji: '🇬🇪',
   },
   {
     id: 'philippines',
@@ -960,6 +1198,8 @@ const regions: MapRegion[] = [
     labelX: 843,
     labelY: 247,
     funFact: 'The Philippines has over 7,600 islands!',
+    capital: 'Manila',
+    flagEmoji: '🇵🇭',
   },
   {
     id: 'malaysia',
@@ -968,6 +1208,8 @@ const regions: MapRegion[] = [
     labelX: 806,
     labelY: 270,
     funFact: 'Malaysia is a country with its own unique culture and history!',
+    capital: 'Kuala Lumpur',
+    flagEmoji: '🇲🇾',
   },
   {
     id: 'finland',
@@ -976,6 +1218,8 @@ const regions: MapRegion[] = [
     labelX: 573,
     labelY: 100,
     funFact: 'Finland has more saunas than cars!',
+    capital: 'Helsinki',
+    flagEmoji: '🇫🇮',
   },
   {
     id: 'slovakia',
@@ -984,6 +1228,8 @@ const regions: MapRegion[] = [
     labelX: 554,
     labelY: 144,
     funFact: 'Slovakia is a country with its own unique culture and history!',
+    capital: 'Bratislava',
+    flagEmoji: '🇸🇰',
   },
   {
     id: 'czech-republic',
@@ -992,6 +1238,8 @@ const regions: MapRegion[] = [
     labelX: 543,
     labelY: 141,
     funFact: 'Czech Republic is a country with its own unique culture and history!',
+    capital: 'Prague',
+    flagEmoji: '🇨🇿',
   },
   {
     id: 'eritrea',
@@ -1000,6 +1248,8 @@ const regions: MapRegion[] = [
     labelX: 608,
     labelY: 237,
     funFact: 'Eritrea is a country with its own unique culture and history!',
+    capital: 'Asmara',
+    flagEmoji: '🇪🇷',
   },
   {
     id: 'japan',
@@ -1008,6 +1258,8 @@ const regions: MapRegion[] = [
     labelX: 886,
     labelY: 175,
     funFact: 'Japan has more than 6,800 islands and super-fast bullet trains!',
+    capital: 'Tokyo',
+    flagEmoji: '🇯🇵',
   },
   {
     id: 'paraguay',
@@ -1016,6 +1268,8 @@ const regions: MapRegion[] = [
     labelX: 337,
     labelY: 345,
     funFact: 'Paraguay is a country with its own unique culture and history!',
+    capital: 'Asuncion',
+    flagEmoji: '🇵🇾',
   },
   {
     id: 'yemen',
@@ -1024,6 +1278,8 @@ const regions: MapRegion[] = [
     labelX: 633,
     labelY: 236,
     funFact: 'Yemen is a country with its own unique culture and history!',
+    capital: 'Sanaa',
+    flagEmoji: '🇾🇪',
   },
   {
     id: 'saudi-arabia',
@@ -1032,6 +1288,8 @@ const regions: MapRegion[] = [
     labelX: 624,
     labelY: 213,
     funFact: 'Saudi Arabia is mostly desert and turns ocean water into drinking water!',
+    capital: 'Riyadh',
+    flagEmoji: '🇸🇦',
   },
   {
     id: 'antarctica',
@@ -1040,6 +1298,8 @@ const regions: MapRegion[] = [
     labelX: 557,
     labelY: 505,
     funFact: 'Antarctica is the coldest place on Earth — no country owns it!',
+    capital: '',
+    flagEmoji: '🇦🇶',
   },
   {
     id: 'morocco',
@@ -1048,6 +1308,8 @@ const regions: MapRegion[] = [
     labelX: 476,
     labelY: 197,
     funFact: 'Morocco is in Africa but is only 9 miles from Europe across the sea!',
+    capital: 'Rabat',
+    flagEmoji: '🇲🇦',
   },
   {
     id: 'egypt',
@@ -1056,6 +1318,8 @@ const regions: MapRegion[] = [
     labelX: 583,
     labelY: 206,
     funFact: 'Egypt is famous for the pyramids — the Great Pyramid has over 2 million stone blocks!',
+    capital: 'Cairo',
+    flagEmoji: '🇪🇬',
   },
   {
     id: 'libya',
@@ -1064,6 +1328,8 @@ const regions: MapRegion[] = [
     labelX: 550,
     labelY: 205,
     funFact: 'The Sahara Desert covers most of Libya!',
+    capital: 'Tripoli',
+    flagEmoji: '🇱🇾',
   },
   {
     id: 'ethiopia',
@@ -1072,6 +1338,8 @@ const regions: MapRegion[] = [
     labelX: 610,
     labelY: 256,
     funFact: 'Ethiopia is where coffee was first discovered!',
+    capital: 'Addis Ababa',
+    flagEmoji: '🇪🇹',
   },
   {
     id: 'uganda',
@@ -1080,6 +1348,8 @@ const regions: MapRegion[] = [
     labelX: 590,
     labelY: 276,
     funFact: 'Uganda is a country with its own unique culture and history!',
+    capital: 'Kampala',
+    flagEmoji: '🇺🇬',
   },
   {
     id: 'bosnia-and-herzegovina',
@@ -1088,6 +1358,8 @@ const regions: MapRegion[] = [
     labelX: 550,
     labelY: 157,
     funFact: 'Bosnia and Herzegovina is a country with its own unique culture and history!',
+    capital: 'Sarajevo',
+    flagEmoji: '🇧🇦',
   },
   {
     id: 'north-macedonia',
@@ -1096,6 +1368,8 @@ const regions: MapRegion[] = [
     labelX: 561,
     labelY: 164,
     funFact: 'North Macedonia is a country with its own unique culture and history!',
+    capital: 'Skopje',
+    flagEmoji: '🇲🇰',
   },
   {
     id: 'serbia',
@@ -1104,6 +1378,8 @@ const regions: MapRegion[] = [
     labelX: 558,
     labelY: 156,
     funFact: 'Serbia is a country with its own unique culture and history!',
+    capital: 'Belgrade',
+    flagEmoji: '🇷🇸',
   },
   {
     id: 'south-sudan',
@@ -1112,6 +1388,8 @@ const regions: MapRegion[] = [
     labelX: 584,
     labelY: 260,
     funFact: 'South Sudan is a country with its own unique culture and history!',
+    capital: 'Juba',
+    flagEmoji: '🇸🇸',
   },
 ];
 

@@ -9,6 +9,7 @@ const states: MapRegion[] = [
     labelY: 417,
     abbreviation: 'AL',
     funFact: 'The first 911 call in the United States was made in Alabama in 1968!',
+    capital: 'Montgomery',
   },
   {
     id: 'alaska',
@@ -18,6 +19,7 @@ const states: MapRegion[] = [
     labelY: 501,
     abbreviation: 'AK',
     funFact: 'Alaska is the biggest state — it is more than twice the size of Texas!',
+    capital: 'Juneau',
   },
   {
     id: 'arizona',
@@ -27,6 +29,7 @@ const states: MapRegion[] = [
     labelY: 371,
     abbreviation: 'AZ',
     funFact: 'The Grand Canyon is in Arizona — it is more than a mile deep!',
+    capital: 'Phoenix',
   },
   {
     id: 'arkansas',
@@ -36,6 +39,7 @@ const states: MapRegion[] = [
     labelY: 379,
     abbreviation: 'AR',
     funFact: 'Arkansas has the only diamond mine in the US where you can dig for diamonds!',
+    capital: 'Little Rock',
   },
   {
     id: 'california',
@@ -45,6 +49,7 @@ const states: MapRegion[] = [
     labelY: 284,
     abbreviation: 'CA',
     funFact: 'California has the tallest trees in the world — giant redwoods!',
+    capital: 'Sacramento',
   },
   {
     id: 'colorado',
@@ -54,6 +59,7 @@ const states: MapRegion[] = [
     labelY: 286,
     abbreviation: 'CO',
     funFact: 'Colorado has over 50 mountain peaks taller than 14,000 feet!',
+    capital: 'Denver',
   },
   {
     id: 'connecticut',
@@ -63,6 +69,7 @@ const states: MapRegion[] = [
     labelY: 194,
     abbreviation: 'CT',
     funFact: 'The first hamburger in America was served in Connecticut!',
+    capital: 'Hartford',
   },
   {
     id: 'delaware',
@@ -72,6 +79,7 @@ const states: MapRegion[] = [
     labelY: 259,
     abbreviation: 'DE',
     funFact: 'Delaware was the very first state to join the United States!',
+    capital: 'Dover',
   },
   {
     id: 'florida',
@@ -81,6 +89,7 @@ const states: MapRegion[] = [
     labelY: 494,
     abbreviation: 'FL',
     funFact: 'Florida is home to Walt Disney World and has more oranges than any other state!',
+    capital: 'Tallahassee',
   },
   {
     id: 'georgia',
@@ -90,6 +99,7 @@ const states: MapRegion[] = [
     labelY: 414,
     abbreviation: 'GA',
     funFact: 'Georgia is called the Peach State and grows tons of juicy peaches!',
+    capital: 'Atlanta',
   },
   {
     id: 'hawaii',
@@ -99,6 +109,7 @@ const states: MapRegion[] = [
     labelY: 550,
     abbreviation: 'HI',
     funFact: 'Hawaii is made of volcanic islands and has beautiful rainbows almost every day!',
+    capital: 'Honolulu',
   },
   {
     id: 'idaho',
@@ -108,6 +119,7 @@ const states: MapRegion[] = [
     labelY: 154,
     abbreviation: 'ID',
     funFact: 'Idaho grows more potatoes than any other state!',
+    capital: 'Boise',
   },
   {
     id: 'illinois',
@@ -117,6 +129,7 @@ const states: MapRegion[] = [
     labelY: 268,
     abbreviation: 'IL',
     funFact: 'Chicago, in Illinois, is called the Windy City and invented the skyscraper!',
+    capital: 'Springfield',
   },
   {
     id: 'indiana',
@@ -126,6 +139,7 @@ const states: MapRegion[] = [
     labelY: 267,
     abbreviation: 'IN',
     funFact: 'The famous Indianapolis 500 car race has been held in Indiana since 1911!',
+    capital: 'Indianapolis',
   },
   {
     id: 'iowa',
@@ -135,6 +149,7 @@ const states: MapRegion[] = [
     labelY: 228,
     abbreviation: 'IA',
     funFact: 'Iowa grows more corn than any other state!',
+    capital: 'Des Moines',
   },
   {
     id: 'kansas',
@@ -144,6 +159,7 @@ const states: MapRegion[] = [
     labelY: 303,
     abbreviation: 'KS',
     funFact: 'Kansas grows enough wheat every year to make 36 billion loaves of bread!',
+    capital: 'Topeka',
   },
   {
     id: 'kentucky',
@@ -153,6 +169,7 @@ const states: MapRegion[] = [
     labelY: 315,
     abbreviation: 'KY',
     funFact: 'The Kentucky Derby is the most famous horse race in the world!',
+    capital: 'Frankfort',
   },
   {
     id: 'louisiana',
@@ -162,6 +179,7 @@ const states: MapRegion[] = [
     labelY: 460,
     abbreviation: 'LA',
     funFact: 'Louisiana is home to alligators — over 2 million of them live there!',
+    capital: 'Baton Rouge',
   },
   {
     id: 'maine',
@@ -171,6 +189,7 @@ const states: MapRegion[] = [
     labelY: 105,
     abbreviation: 'ME',
     funFact: 'Maine produces 99% of all the blueberries in the United States!',
+    capital: 'Augusta',
   },
   {
     id: 'maryland',
@@ -180,6 +199,7 @@ const states: MapRegion[] = [
     labelY: 261,
     abbreviation: 'MD',
     funFact: 'Maryland is famous for its delicious blue crabs from the Chesapeake Bay!',
+    capital: 'Annapolis',
   },
   {
     id: 'massachusetts',
@@ -189,6 +209,7 @@ const states: MapRegion[] = [
     labelY: 178,
     abbreviation: 'MA',
     funFact: 'Basketball was invented in Massachusetts in 1891!',
+    capital: 'Boston',
   },
   {
     id: 'michigan',
@@ -198,6 +219,7 @@ const states: MapRegion[] = [
     labelY: 173,
     abbreviation: 'MI',
     funFact: 'Michigan is surrounded by the Great Lakes and has tons of coastline!',
+    capital: 'Lansing',
   },
   {
     id: 'minnesota',
@@ -207,6 +229,7 @@ const states: MapRegion[] = [
     labelY: 140,
     abbreviation: 'MN',
     funFact: 'Minnesota is called the Land of 10,000 Lakes — it actually has over 11,000!',
+    capital: 'Saint Paul',
   },
   {
     id: 'mississippi',
@@ -216,6 +239,7 @@ const states: MapRegion[] = [
     labelY: 422,
     abbreviation: 'MS',
     funFact: 'The Mississippi River, the longest river in the US, runs along the state!',
+    capital: 'Jackson',
   },
   {
     id: 'missouri',
@@ -225,6 +249,7 @@ const states: MapRegion[] = [
     labelY: 306,
     abbreviation: 'MO',
     funFact: 'The Gateway Arch in St. Louis is the tallest monument in the United States!',
+    capital: 'Jefferson City',
   },
   {
     id: 'montana',
@@ -234,6 +259,7 @@ const states: MapRegion[] = [
     labelY: 110,
     abbreviation: 'MT',
     funFact: 'Montana is called Big Sky Country because the sky looks enormous!',
+    capital: 'Helena',
   },
   {
     id: 'nebraska',
@@ -243,6 +269,7 @@ const states: MapRegion[] = [
     labelY: 239,
     abbreviation: 'NE',
     funFact: 'Nebraska has more miles of river than any other state!',
+    capital: 'Lincoln',
   },
   {
     id: 'nevada',
@@ -252,6 +279,7 @@ const states: MapRegion[] = [
     labelY: 251,
     abbreviation: 'NV',
     funFact: 'Nevada means snow-covered in Spanish because of its snowy mountains!',
+    capital: 'Carson City',
   },
   {
     id: 'new-hampshire',
@@ -261,6 +289,7 @@ const states: MapRegion[] = [
     labelY: 148,
     abbreviation: 'NH',
     funFact: 'New Hampshire has a mountain with the windiest weather ever recorded!',
+    capital: 'Concord',
   },
   {
     id: 'new-jersey',
@@ -270,6 +299,7 @@ const states: MapRegion[] = [
     labelY: 231,
     abbreviation: 'NJ',
     funFact: 'New Jersey is called the Garden State because of all its beautiful farms!',
+    capital: 'Trenton',
   },
   {
     id: 'new-mexico',
@@ -279,6 +309,7 @@ const states: MapRegion[] = [
     labelY: 381,
     abbreviation: 'NM',
     funFact: 'New Mexico has a city called Truth or Consequences — named after a TV show!',
+    capital: 'Santa Fe',
   },
   {
     id: 'new-york',
@@ -288,6 +319,7 @@ const states: MapRegion[] = [
     labelY: 177,
     abbreviation: 'NY',
     funFact: 'The Statue of Liberty in New York was a gift from France!',
+    capital: 'Albany',
   },
   {
     id: 'north-carolina',
@@ -297,6 +329,7 @@ const states: MapRegion[] = [
     labelY: 342,
     abbreviation: 'NC',
     funFact: 'The Wright Brothers made the first airplane flight in North Carolina!',
+    capital: 'Raleigh',
   },
   {
     id: 'north-dakota',
@@ -306,6 +339,7 @@ const states: MapRegion[] = [
     labelY: 114,
     abbreviation: 'ND',
     funFact: 'North Dakota produces more sunflowers than any other state!',
+    capital: 'Bismarck',
   },
   {
     id: 'ohio',
@@ -315,6 +349,7 @@ const states: MapRegion[] = [
     labelY: 252,
     abbreviation: 'OH',
     funFact: 'Ohio is the birthplace of 8 US presidents — more than any other state!',
+    capital: 'Columbus',
   },
   {
     id: 'oklahoma',
@@ -324,6 +359,7 @@ const states: MapRegion[] = [
     labelY: 365,
     abbreviation: 'OK',
     funFact: 'Oklahoma has more man-made lakes than any other state!',
+    capital: 'Oklahoma City',
   },
   {
     id: 'oregon',
@@ -333,6 +369,7 @@ const states: MapRegion[] = [
     labelY: 142,
     abbreviation: 'OR',
     funFact: 'Crater Lake in Oregon is the deepest lake in the United States!',
+    capital: 'Salem',
   },
   {
     id: 'pennsylvania',
@@ -342,6 +379,7 @@ const states: MapRegion[] = [
     labelY: 227,
     abbreviation: 'PA',
     funFact: 'The Liberty Bell, a symbol of American freedom, is in Philadelphia!',
+    capital: 'Harrisburg',
   },
   {
     id: 'rhode-island',
@@ -351,6 +389,7 @@ const states: MapRegion[] = [
     labelY: 188,
     abbreviation: 'RI',
     funFact: 'Rhode Island is the smallest state — you can drive across it in under an hour!',
+    capital: 'Providence',
   },
   {
     id: 'south-carolina',
@@ -360,6 +399,7 @@ const states: MapRegion[] = [
     labelY: 381,
     abbreviation: 'SC',
     funFact: 'South Carolina has beautiful beaches and was one of the original 13 colonies!',
+    capital: 'Columbia',
   },
   {
     id: 'south-dakota',
@@ -369,6 +409,7 @@ const states: MapRegion[] = [
     labelY: 177,
     abbreviation: 'SD',
     funFact: 'Mount Rushmore with four presidents carved in stone is in South Dakota!',
+    capital: 'Pierre',
   },
   {
     id: 'tennessee',
@@ -378,6 +419,7 @@ const states: MapRegion[] = [
     labelY: 352,
     abbreviation: 'TN',
     funFact: 'Nashville, Tennessee is the home of country music!',
+    capital: 'Nashville',
   },
   {
     id: 'texas',
@@ -387,6 +429,7 @@ const states: MapRegion[] = [
     labelY: 451,
     abbreviation: 'TX',
     funFact: 'Texas is so big you could fit the whole country of France inside it!',
+    capital: 'Austin',
   },
   {
     id: 'utah',
@@ -396,6 +439,7 @@ const states: MapRegion[] = [
     labelY: 266,
     abbreviation: 'UT',
     funFact: 'Utah has five amazing national parks, including Arches with natural stone arches!',
+    capital: 'Salt Lake City',
   },
   {
     id: 'vermont',
@@ -405,6 +449,7 @@ const states: MapRegion[] = [
     labelY: 144,
     abbreviation: 'VT',
     funFact: 'Vermont makes more maple syrup than any other state!',
+    capital: 'Montpelier',
   },
   {
     id: 'virginia',
@@ -414,6 +459,7 @@ const states: MapRegion[] = [
     labelY: 314,
     abbreviation: 'VA',
     funFact: 'Eight US presidents were born in Virginia — the most of any state!',
+    capital: 'Richmond',
   },
   {
     id: 'washington',
@@ -423,6 +469,7 @@ const states: MapRegion[] = [
     labelY: 73,
     abbreviation: 'WA',
     funFact: 'Washington grows more apples than any other state!',
+    capital: 'Olympia',
   },
   {
     id: 'west-virginia',
@@ -432,6 +479,7 @@ const states: MapRegion[] = [
     labelY: 281,
     abbreviation: 'WV',
     funFact: 'West Virginia is almost entirely covered by mountains and forests!',
+    capital: 'Charleston',
   },
   {
     id: 'wisconsin',
@@ -441,6 +489,7 @@ const states: MapRegion[] = [
     labelY: 172,
     abbreviation: 'WI',
     funFact: 'Wisconsin is the dairy capital — they make more cheese than any other state!',
+    capital: 'Madison',
   },
   {
     id: 'wyoming',
@@ -450,6 +499,7 @@ const states: MapRegion[] = [
     labelY: 199,
     abbreviation: 'WY',
     funFact: 'Yellowstone, the first national park in the world, is mostly in Wyoming!',
+    capital: 'Cheyenne',
   },
 ];
 

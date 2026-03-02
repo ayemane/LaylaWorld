@@ -1,6 +1,6 @@
 // Sound manager using Web Audio API
 
-type SoundType = 'correct' | 'wrong' | 'win' | 'lose' | 'click';
+type SoundType = 'correct' | 'wrong' | 'win' | 'lose' | 'click' | 'stamp' | 'levelup' | 'cardflip' | 'switch';
 
 class SoundManager {
   private audioContext: AudioContext | null = null;
@@ -90,6 +90,31 @@ class SoundManager {
       case 'lose':
         // Encouraging "try again" sound
         this.playChord([392, 330, 294], 0.4, 'triangle', 0.15);
+        break;
+
+      case 'stamp':
+        // Stamp earned - bright pop
+        this.playTone(880, 0.1, 'sine', 0.2);
+        setTimeout(() => this.playTone(1100, 0.15, 'sine', 0.15), 80);
+        break;
+
+      case 'levelup':
+        // Level up fanfare
+        this.playChord([523, 659, 784], 0.3, 'sine', 0.2);
+        setTimeout(() => this.playChord([659, 784, 1047], 0.4, 'sine', 0.25), 250);
+        setTimeout(() => this.playChord([784, 988, 1175], 0.5, 'sine', 0.2), 500);
+        break;
+
+      case 'cardflip':
+        // Card flip - soft whoosh
+        this.playTone(400, 0.08, 'sine', 0.1);
+        setTimeout(() => this.playTone(600, 0.08, 'sine', 0.08), 50);
+        break;
+
+      case 'switch':
+        // Player switch - attention tone
+        this.playTone(660, 0.15, 'sine', 0.15);
+        setTimeout(() => this.playTone(880, 0.2, 'sine', 0.15), 150);
         break;
     }
   }
