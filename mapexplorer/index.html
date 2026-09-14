@@ -58,19 +58,32 @@
     <div id="mode-picker-screen" class="screen">
       <a href="/" class="home-link">&larr; Layla's World</a>
       <h1 class="game-title" id="mode-picker-title">Scout</h1>
+
+      <div class="unlock-progress">
+        <div class="unlock-row">
+          <span id="unlock-label">0 of 50 learned</span>
+          <span id="unlock-pct">0%</span>
+        </div>
+        <div class="unlock-track"><div id="unlock-fill"></div></div>
+        <p class="unlock-hint" id="unlock-hint">Learn 10 places to unlock Challenge!</p>
+      </div>
+
       <div class="mode-picker">
         <button class="mode-btn learn" id="mode-learn-btn">
           <span class="mode-emoji">📖</span>
           <span class="mode-label">Learn Mode</span>
+          <span class="mode-sub" id="learn-batch-sub">Batch 1 of 10</span>
         </button>
         <button class="mode-btn challenge" id="mode-challenge-btn">
           <span class="mode-emoji">⚔️</span>
           <span class="mode-label">Solo Challenge</span>
+          <span class="mode-sub" id="challenge-sub"></span>
           <span class="mode-lock" id="challenge-lock"></span>
         </button>
         <button class="mode-btn twoplayer" id="mode-2p-btn">
           <span class="mode-emoji">👨‍👧</span>
           <span class="mode-label">Play with Baba</span>
+          <span class="mode-sub" id="twoplayer-sub"></span>
           <span class="mode-lock" id="twoplayer-lock"></span>
         </button>
         <button class="mode-btn back" id="mode-back-btn">

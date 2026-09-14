@@ -216,12 +216,49 @@ export function recordTwoPlayerMatch(match: TwoPlayerMatch): void {
 
 // --- Gating Logic ---
 
-export function isChallengeUnlocked(difficulty: Difficulty, totalRegions: number): boolean {
+/**
+ * How many regions must be learned before Challenge and 2-Player open.
+ *
+ * Two batches. This used to require EVERY batch, which on World meant 139
+ * countries across 28 batches of flashcards before the actual game could be
+ * played even once — and nothing on screen said so, so there was no way to
+ * know how far away it was. Learning them all is still the goal; it is just
+ * no longer the price of admission.
+ */
+export const REGIONS_TO_UNLOCK = 10;
+
+export interface UnlockProgress {
+  learned: number;
+  total: number;
+  /** Regions needed for the unlock (never more than the map has). */
+  needed: number;
+  remaining: number;
+  unlocked: boolean;
+  /** Progress toward learning the whole map, 0-100. */
+  masteryPct: number;
+}
+
+export function getUnlockProgress(difficulty: Difficulty, totalRegions: number): UnlockProgress {
+  const learned = getLearnProgress(difficulty).learnedRegions.length;
+  const needed = Math.min(REGIONS_TO_UNLOCK, totalRegions);
   const settings = getParentSettings();
-  if (settings.gatingMode === 'always_available') return true;
-  if (settings.gatingMode === 'soft_gate') return isSoftGateUnlocked(difficulty);
-  // gated: must complete all learn batches
-  return isLearnComplete(difficulty, totalRegions);
+  const unlocked = settings.gatingMode === 'always_available'
+    ? true
+    : settings.gatingMode === 'soft_gate'
+      ? isSoftGateUnlocked(difficulty)
+      : learned >= needed;
+  return {
+    learned,
+    total: totalRegions,
+    needed,
+    remaining: Math.max(0, needed - learned),
+    unlocked,
+    masteryPct: totalRegions > 0 ? Math.round((learned / totalRegions) * 100) : 0
+  };
+}
+
+export function isChallengeUnlocked(difficulty: Difficulty, totalRegions: number): boolean {
+  return getUnlockProgress(difficulty, totalRegions).unlocked;
 }
 
 // --- Reset ---

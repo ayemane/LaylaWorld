@@ -12,9 +12,10 @@ import { soundManager } from '../game/sounds';
 import { US_STATES_MAP } from './maps/us-states';
 import { WORLD_MAP } from './maps/world';
 import {
-  isChallengeUnlocked, getXPData, getXPForNextLevel, awardXP, XP_AWARDS,
+  getUnlockProgress, getLearnProgress,
+  getXPData, getXPForNextLevel, awardXP, XP_AWARDS,
 } from './store';
-import { getTotalRegions } from './learn';
+import { getTotalRegions, getTotalBatches } from './learn';
 import { LearnUI } from './learn-ui';
 import { TwoPlayerUI } from './twoplayer-ui';
 
@@ -88,20 +89,12 @@ class MapExplorerApp {
     });
 
     document.getElementById('mode-challenge-btn')!.addEventListener('click', () => {
-      const totalRegions = getTotalRegions(this.currentDifficulty);
-      if (!isChallengeUnlocked(this.currentDifficulty, totalRegions)) {
-        soundManager.play('wrong');
-        return;
-      }
+      if (this.blockedByLock()) return;
       this.startGame(this.currentDifficulty);
     });
 
     document.getElementById('mode-2p-btn')!.addEventListener('click', () => {
-      const totalRegions = getTotalRegions(this.currentDifficulty);
-      if (!isChallengeUnlocked(this.currentDifficulty, totalRegions)) {
-        soundManager.play('wrong');
-        return;
-      }
+      if (this.blockedByLock()) return;
       this.twoPlayerUI.start2P(this.currentDifficulty);
     });
 
@@ -146,6 +139,27 @@ class MapExplorerApp {
     }
   }
 
+  /**
+   * True when the tapped mode is still locked.
+   *
+   * Tapping a locked button used to just play a buzz and do nothing, which
+   * gives a child no idea why. Say the number out loud instead.
+   */
+  private blockedByLock(): boolean {
+    const totalRegions = getTotalRegions(this.currentDifficulty);
+    const progress = getUnlockProgress(this.currentDifficulty, totalRegions);
+    if (progress.unlocked) return false;
+
+    soundManager.play('wrong');
+    const hint = document.getElementById('unlock-hint')!;
+    const n = progress.remaining;
+    hint.textContent = `Still locked — learn ${n} more ${n === 1 ? 'place' : 'places'} in Learn Mode first!`;
+    hint.classList.remove('nudge');
+    void hint.offsetWidth;
+    hint.classList.add('nudge');
+    return true;
+  }
+
   private showModePicker(difficulty: Difficulty): void {
     this.currentDifficulty = difficulty;
     soundManager.play('click');
@@ -154,25 +168,62 @@ class MapExplorerApp {
     document.getElementById('mode-picker-title')!.textContent =
       `You picked ${DIFFICULTY_LABELS[difficulty]}!`;
 
-    // Update lock states
+    // Show the whole path, not just a padlock.
+    //
+    // This screen used to render a bare 🔒 and nothing else — no count, no
+    // target, no name for what opened it. There was no way to tell whether
+    // the unlock was one batch away or twenty-seven.
     const totalRegions = getTotalRegions(difficulty);
-    const unlocked = isChallengeUnlocked(difficulty, totalRegions);
+    const progress = getUnlockProgress(difficulty, totalRegions);
+    const totalBatches = getTotalBatches(difficulty);
+    const batchIndex = getLearnProgress(difficulty).currentBatchIndex;
+    const nextBatch = Math.min(batchIndex + 1, totalBatches);
+
+    document.getElementById('unlock-label')!.textContent =
+      `${progress.learned} of ${progress.total} learned`;
+    document.getElementById('unlock-pct')!.textContent = `${progress.masteryPct}%`;
+    document.getElementById('unlock-fill')!.style.width = `${progress.masteryPct}%`;
+
+    const hint = document.getElementById('unlock-hint')!;
+    if (!progress.unlocked) {
+      const n = progress.remaining;
+      hint.textContent = `Learn ${n} more ${n === 1 ? 'place' : 'places'} to unlock Challenge!`;
+    } else if (progress.learned >= progress.total) {
+      hint.textContent = `You learned all ${progress.total}! Every stamp is yours. 🏆`;
+    } else {
+      const left = progress.total - progress.learned;
+      hint.textContent = `Keep learning to stamp all ${progress.total} — ${left} to go!`;
+    }
+
+    document.getElementById('learn-batch-sub')!.textContent =
+      batchIndex >= totalBatches
+        ? 'All batches done — practise again'
+        : `Batch ${nextBatch} of ${totalBatches}`;
 
     const challengeBtn = document.getElementById('mode-challenge-btn')!;
     const twopBtn = document.getElementById('mode-2p-btn')!;
     const challengeLock = document.getElementById('challenge-lock')!;
     const twopLock = document.getElementById('twoplayer-lock')!;
+    const challengeSub = document.getElementById('challenge-sub')!;
+    const twopSub = document.getElementById('twoplayer-sub')!;
 
-    if (unlocked) {
+    if (progress.unlocked) {
       challengeBtn.classList.remove('locked');
       twopBtn.classList.remove('locked');
       challengeLock.textContent = '';
       twopLock.textContent = '';
+      challengeSub.textContent = 'Unlocked ✓';
+      twopSub.textContent = 'Unlocked ✓';
     } else {
       challengeBtn.classList.add('locked');
       twopBtn.classList.add('locked');
       challengeLock.textContent = '🔒';
       twopLock.textContent = '🔒';
+      // Just the number — the hint line above already says the full sentence,
+      // and the longer label wrapped the button title onto two lines.
+      const need = `${progress.remaining} more`;
+      challengeSub.textContent = need;
+      twopSub.textContent = need;
     }
 
     this.showScreen('mode-picker');
