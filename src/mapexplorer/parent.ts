@@ -61,7 +61,7 @@ class ParentDashboard {
               ${settings.gatingMode === 'gated' ? 'checked' : ''}>
             <div>
               <strong>Gated</strong>
-              <p>Challenge mode locked until all learn batches are complete</p>
+              <p>Challenge and 2-Player unlock after 10 places are learned (two batches). Learning the whole map stays the goal, but it is no longer required to play.</p>
             </div>
           </label>
           <label class="parent-radio">

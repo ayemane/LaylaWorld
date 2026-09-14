@@ -1147,3 +1147,72 @@ body {
   .map-container { padding: 5px; }
   .map-label { font-size: 6px; }
 }
+
+/* ── Unlock path (mode picker) ──────────────────────────────
+   Added because this screen previously showed a bare padlock and nothing
+   else: no count, no target, no name for what opened it. */
+
+.unlock-progress {
+  width: 100%;
+  max-width: 420px;
+  margin: 4px 0 18px;
+}
+
+.unlock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: .9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+#unlock-pct {
+  font-variant-numeric: tabular-nums;
+  opacity: .75;
+}
+
+.unlock-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .13);
+  overflow: hidden;
+}
+
+#unlock-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #34d399, #fbbf24);
+  transition: width .5s ease;
+}
+
+.unlock-hint {
+  margin-top: 8px;
+  font-size: .88rem;
+  text-align: center;
+  opacity: .85;
+  line-height: 1.4;
+}
+
+.mode-sub {
+  display: block;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  opacity: .7;
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mode-btn.locked .mode-sub { opacity: .9; }
+
+.unlock-hint.nudge {
+  color: #fbbf24;
+  animation: unlock-nudge .45s ease;
+}
+@keyframes unlock-nudge {
+  0%, 100% { transform: none; }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
