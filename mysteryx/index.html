@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f59e0b">
+  <title>Mystery X - Layla's World</title>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <a href="/" class="home-link">← Layla's World</a>
+      <h1 class="game-title">Mystery X</h1>
+      <p class="subtitle">Free the mystery number!</p>
+
+      <div class="how-to">
+        <strong>x</strong> is a number in disguise. The scale is balanced, so
+        whatever you do to one side you must do to the other.
+        <span class="eq-demo">3x + 10 = 25</span>
+        Take away 10 from <em>both</em> sides, then split <em>both</em> sides
+        into 3 — and x is standing alone.
+        <span class="eq-demo">x = 5</span>
+        Every button keeps the scale balanced. Your job is picking the one that
+        <strong>gets x by itself</strong>.
+      </div>
+
+      <div class="difficulty-select">
+        <h2>Pick your case:</h2>
+        <button class="difficulty-btn easy" data-difficulty="easy">
+          <span class="emoji">🔍</span>
+          <div>
+            <span class="label">Apprentice</span>
+            <span class="desc">x + 7 = 12&nbsp; · &nbsp;one move</span>
+          </div>
+        </button>
+        <button class="difficulty-btn medium" data-difficulty="medium">
+          <span class="emoji">⚖️</span>
+          <div>
+            <span class="label">Detective</span>
+            <span class="desc">3x + 10 = 25&nbsp; · &nbsp;two moves</span>
+          </div>
+        </button>
+        <button class="difficulty-btn hard" data-difficulty="hard">
+          <span class="emoji">🧠</span>
+          <div>
+            <span class="label">Mastermind</span>
+            <span class="desc">9x − 12 = 42&nbsp; · &nbsp;x/4 + 11 = 20</span>
+          </div>
+        </button>
+      </div>
+
+      <a href="/mysteryx/layla/" class="stats-link">📊 Case File</a>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="game-header">
+        <div id="score-display">Score: 0</div>
+        <div id="streak-display">0</div>
+      </div>
+      <div id="lives-display">💡💡💡💡💡</div>
+
+      <div class="progress-track"><div id="progress-fill"></div></div>
+      <div id="progress-text">0/8</div>
+
+      <div id="scale">
+        <div class="scale-beam">
+          <div class="pan" id="scale-left">3x + 10</div>
+          <div class="equals">=</div>
+          <div class="pan" id="scale-right">25</div>
+        </div>
+        <div class="scale-fulcrum">⚖️</div>
+        <p class="balance-note">Both sides must always stay equal</p>
+      </div>
+
+      <div id="message-display" class="message">Which move gets x by itself?</div>
+
+      <div id="moves-container"></div>
+
+      <div class="steps-panel">
+        <h3>Your working</h3>
+        <ol id="steps-list"><li class="steps-empty">Your working will show up here.</li></ol>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+      <div id="confetti-container"></div>
+      <div class="result-content">
+        <h1 id="result-title">Case Closed!</h1>
+        <p id="result-message"></p>
+        <div id="final-score">Final Score: 0</div>
+        <div id="result-stats"></div>
+        <div id="result-achievements"></div>
+        <div class="result-buttons">
+          <button id="play-again-btn" class="primary-btn">Play Again</button>
+          <button id="change-level-btn" class="secondary-btn">Change Case</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="/src/mysteryx/main.ts"></script>
+  <script type="module" src="/src/analytics.ts"></script>
+</body>
+</html>
