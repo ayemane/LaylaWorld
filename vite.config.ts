@@ -11,6 +11,8 @@ export default defineConfig({
         'mathquest-layla': 'mathquest/layla/index.html',
         spellingbee: 'spellingbee/index.html',
         'spellingbee-layla': 'spellingbee/layla/index.html',
+        mysteryx: 'mysteryx/index.html',
+        'mysteryx-layla': 'mysteryx/layla/index.html',
         mapexplorer: 'mapexplorer/index.html',
         'mapexplorer-layla': 'mapexplorer/layla/index.html',
         'mapexplorer-passport': 'mapexplorer/passport/index.html',
